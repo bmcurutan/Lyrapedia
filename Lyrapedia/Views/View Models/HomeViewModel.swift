@@ -10,9 +10,12 @@ import UIKit
 class HomeViewModel {
     var cards: [Card] {
         return [
-            Card(view: ProgressionsCardView(), title: "Progressions Card View"),
             Card(view: BasicCardView(), title: "Basic Card View"),
-            Card(view: ColorCodedCardView(), title: "Color Coded Card View")
+            Card(view: BasicPlusCardView(), title: "Basic Plus Card View"),
+            Card(view: ColorCodedCardView(), title: "Color Coded Card View"),
+            Card(view: ProgressionsCardView(), title: "Progressions Card View"),
+            Card(view: TipsCardView(), title: "Tips Card View // TODO"),
+            Card(view: BackCardView(), title: "Back Card View // TODO")
         ]
     }
 }
