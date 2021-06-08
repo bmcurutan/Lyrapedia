@@ -38,7 +38,7 @@ extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
-        cell.textLabel?.text = "Style \(indexPath.row + 1)"
+        cell.textLabel?.text = viewModel.cards[indexPath.row].title
         return cell
     }
 }
@@ -46,14 +46,14 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let card = viewModel.cards[indexPath.row]
-        card.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(card)
-        card.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        card.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: card.bottomAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: card.rightAnchor).isActive = true
-        card.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cardTapped(_:))))
+        let cardView = viewModel.cards[indexPath.row].view
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(cardView)
+        cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: cardView.bottomAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: cardView.rightAnchor).isActive = true
+        cardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cardTapped(_:))))
     }
 
     @objc

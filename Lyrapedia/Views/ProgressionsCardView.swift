@@ -10,7 +10,7 @@ import UIKit
 class ProgressionsCardView: UIView {
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.text = "Basic Sit"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false

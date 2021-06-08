@@ -15,6 +15,8 @@
 		67578C81266F2F410073F394 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67578C7F266F2F410073F394 /* LaunchScreen.storyboard */; };
 		67578C90266F328B0073F394 /* ProgressionsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C8F266F328B0073F394 /* ProgressionsCardView.swift */; };
 		67578C94266F32EA0073F394 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C93266F32EA0073F394 /* HomeViewModel.swift */; };
+		67578C98266F3D450073F394 /* ColorCodedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C97266F3D450073F394 /* ColorCodedCardView.swift */; };
+		67578C9B266F41800073F394 /* BasicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C9A266F41800073F394 /* BasicCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		67578C82266F2F410073F394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67578C8F266F328B0073F394 /* ProgressionsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionsCardView.swift; sourceTree = "<group>"; };
 		67578C93266F32EA0073F394 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		67578C97266F3D450073F394 /* ColorCodedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCodedCardView.swift; sourceTree = "<group>"; };
+		67578C9A266F41800073F394 /* BasicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				67578C8F266F328B0073F394 /* ProgressionsCardView.swift */,
+				67578C97266F3D450073F394 /* ColorCodedCardView.swift */,
+				67578C9A266F41800073F394 /* BasicCardView.swift */,
 				67578C92266F32B70073F394 /* View Models */,
 			);
 			path = Views;
@@ -171,7 +177,9 @@
 				67578C79266F2F3E0073F394 /* HomeViewController.swift in Sources */,
 				67578C75266F2F3E0073F394 /* AppDelegate.swift in Sources */,
 				67578C94266F32EA0073F394 /* HomeViewModel.swift in Sources */,
+				67578C98266F3D450073F394 /* ColorCodedCardView.swift in Sources */,
 				67578C77266F2F3E0073F394 /* SceneDelegate.swift in Sources */,
+				67578C9B266F41800073F394 /* BasicCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

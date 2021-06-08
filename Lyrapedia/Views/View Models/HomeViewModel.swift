@@ -8,10 +8,16 @@
 import UIKit
 
 class HomeViewModel {
-    var cards: [UIView] {
+    var cards: [Card] {
         return [
-            ProgressionsCardView()
+            Card(view: ProgressionsCardView(), title: "Progressions Card View"),
+            Card(view: BasicCardView(), title: "Basic Card View"),
+            Card(view: ColorCodedCardView(), title: "Color Coded Card View")
         ]
     }
 }
 
+struct Card {
+    let view: UIView
+    let title: String
+}
