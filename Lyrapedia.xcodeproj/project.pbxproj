@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67578C75266F2F3E0073F394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C74266F2F3E0073F394 /* AppDelegate.swift */; };
+		67578C77266F2F3E0073F394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C76266F2F3E0073F394 /* SceneDelegate.swift */; };
+		67578C79266F2F3E0073F394 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C78266F2F3E0073F394 /* HomeViewController.swift */; };
+		67578C7C266F2F3E0073F394 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67578C7A266F2F3E0073F394 /* Main.storyboard */; };
+		67578C7E266F2F410073F394 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67578C7D266F2F410073F394 /* Assets.xcassets */; };
+		67578C81266F2F410073F394 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67578C7F266F2F410073F394 /* LaunchScreen.storyboard */; };
+		67578C90266F328B0073F394 /* ProgressionsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C8F266F328B0073F394 /* ProgressionsCardView.swift */; };
+		67578C94266F32EA0073F394 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C93266F32EA0073F394 /* HomeViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		67578C71266F2F3E0073F394 /* Lyrapedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lyrapedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67578C74266F2F3E0073F394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		67578C76266F2F3E0073F394 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		67578C78266F2F3E0073F394 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		67578C7B266F2F3E0073F394 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		67578C7D266F2F410073F394 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67578C80266F2F410073F394 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		67578C82266F2F410073F394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67578C8F266F328B0073F394 /* ProgressionsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionsCardView.swift; sourceTree = "<group>"; };
+		67578C93266F32EA0073F394 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67578C6E266F2F3E0073F394 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67578C68266F2F3E0073F394 = {
+			isa = PBXGroup;
+			children = (
+				67578C73266F2F3E0073F394 /* Lyrapedia */,
+				67578C72266F2F3E0073F394 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67578C72266F2F3E0073F394 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67578C71266F2F3E0073F394 /* Lyrapedia.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67578C73266F2F3E0073F394 /* Lyrapedia */ = {
+			isa = PBXGroup;
+			children = (
+				67578C8C266F311F0073F394 /* View Controllers */,
+				67578C8E266F324B0073F394 /* Views */,
+				67578C74266F2F3E0073F394 /* AppDelegate.swift */,
+				67578C76266F2F3E0073F394 /* SceneDelegate.swift */,
+				67578C7D266F2F410073F394 /* Assets.xcassets */,
+				67578C7A266F2F3E0073F394 /* Main.storyboard */,
+				67578C7F266F2F410073F394 /* LaunchScreen.storyboard */,
+				67578C82266F2F410073F394 /* Info.plist */,
+			);
+			path = Lyrapedia;
+			sourceTree = "<group>";
+		};
+		67578C8C266F311F0073F394 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				67578C78266F2F3E0073F394 /* HomeViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		67578C8E266F324B0073F394 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				67578C8F266F328B0073F394 /* ProgressionsCardView.swift */,
+				67578C92266F32B70073F394 /* View Models */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		67578C92266F32B70073F394 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				67578C93266F32EA0073F394 /* HomeViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67578C70266F2F3E0073F394 /* Lyrapedia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67578C85266F2F410073F394 /* Build configuration list for PBXNativeTarget "Lyrapedia" */;
+			buildPhases = (
+				67578C6D266F2F3E0073F394 /* Sources */,
+				67578C6E266F2F3E0073F394 /* Frameworks */,
+				67578C6F266F2F3E0073F394 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lyrapedia;
+			productName = Lyrapedia;
+			productReference = 67578C71266F2F3E0073F394 /* Lyrapedia.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67578C69266F2F3E0073F394 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					67578C70266F2F3E0073F394 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 67578C6C266F2F3E0073F394 /* Build configuration list for PBXProject "Lyrapedia" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67578C68266F2F3E0073F394;
+			productRefGroup = 67578C72266F2F3E0073F394 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67578C70266F2F3E0073F394 /* Lyrapedia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67578C6F266F2F3E0073F394 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67578C81266F2F410073F394 /* LaunchScreen.storyboard in Resources */,
+				67578C7E266F2F410073F394 /* Assets.xcassets in Resources */,
+				67578C7C266F2F3E0073F394 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67578C6D266F2F3E0073F394 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67578C90266F328B0073F394 /* ProgressionsCardView.swift in Sources */,
+				67578C79266F2F3E0073F394 /* HomeViewController.swift in Sources */,
+				67578C75266F2F3E0073F394 /* AppDelegate.swift in Sources */,
+				67578C94266F32EA0073F394 /* HomeViewModel.swift in Sources */,
+				67578C77266F2F3E0073F394 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		67578C7A266F2F3E0073F394 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67578C7B266F2F3E0073F394 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		67578C7F266F2F410073F394 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67578C80266F2F410073F394 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		67578C83266F2F410073F394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		67578C84266F2F410073F394 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67578C86266F2F410073F394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22FG2JE75X;
+				INFOPLIST_FILE = Lyrapedia/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bmcurutan.Lyrapedia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		67578C87266F2F410073F394 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22FG2JE75X;
+				INFOPLIST_FILE = Lyrapedia/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bmcurutan.Lyrapedia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67578C6C266F2F3E0073F394 /* Build configuration list for PBXProject "Lyrapedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67578C83266F2F410073F394 /* Debug */,
+				67578C84266F2F410073F394 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67578C85266F2F410073F394 /* Build configuration list for PBXNativeTarget "Lyrapedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67578C86266F2F410073F394 /* Debug */,
+				67578C87266F2F410073F394 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67578C69266F2F3E0073F394 /* Project object */;
+}
