@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewModel {
+    var title = "Lyrapedia"
+
     var cards: [Card] {
         return [
             Card(view: BasicCardView(), title: "Basic Card View"),
