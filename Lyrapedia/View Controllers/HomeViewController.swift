@@ -10,6 +10,13 @@ import UIKit
 class HomeViewController: UIViewController {
     private var viewModel = HomeViewModel()
 
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.backgroundColor = .white
@@ -25,8 +32,14 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
 
+        titleLabel.text = viewModel.title
+        view.addSubview(titleLabel)
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
+
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: collectionView.rightAnchor, constant: 16).isActive = true
@@ -60,12 +73,20 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: cardView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: cardView.rightAnchor).isActive = true
-        cardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cardTapped(_:))))
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(cardTapped(_:)))
+        tapRecognizer.numberOfTapsRequired = 2
+        cardView.addGestureRecognizer(tapRecognizer)
     }
 
     @objc
     private func cardTapped(_ recognizer: UITapGestureRecognizer) {
-        recognizer.view?.removeFromSuperview()
+        let backCardView = BackCardView()
+        backCardView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backCardView)
+        backCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        backCardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: backCardView.bottomAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: backCardView.rightAnchor).isActive = true
     }
 }
 
