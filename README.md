@@ -2,7 +2,7 @@
 
 ## Xcode 
 - Download [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) from the App Store.
-- Open file Lyrapedia.xcodeproj
+- Open file Lyrapedia.xcodeproj and run simulator
 
 ### Text Editing
 - Preferences > Text Editing > Editing
