@@ -38,7 +38,11 @@ class BackCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        label.text = "1. Starting from a stag seat" +
+            "\n2. Place your grip in an opposing grip on the top of the hoop" +
+            "\n3. Transition teh bottom of the hoop so that it is right on the tail bone and the side of the hoop is on one shoulder" +
+            "\n4. Move the top leg up onto the opposite side of the hoop" +
+            "\n5. Move the second leg on the hoop underneath the first leg while applying pressure through the feet and the shoulder to secure the position"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -62,7 +66,9 @@ class BackCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        label.text = "- Pointing your toes" +
+            "\n- Hands-free" +
+            "\n- Combining the seated legs options"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -86,7 +92,8 @@ class BackCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        label.text = "- Keep your hands on the hoop" +
+            "\n- Do not point your toes, keep the feet flat on the side of the hoop"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -131,7 +138,7 @@ class BackCardView: UIView {
         rightAnchor.constraint(equalTo: (progressionsLabel).rightAnchor, constant: 16).isActive = true
 
         addSubview(regressionsTitleLabel)
-        regressionsTitleLabel.topAnchor.constraint(equalTo: progressionsLabel.bottomAnchor, constant: 24).isActive = true
+        regressionsTitleLabel.topAnchor.constraint(equalTo: progressionsImage.bottomAnchor, constant: 24).isActive = true
         regressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: regressionsTitleLabel.rightAnchor, constant: 16).isActive = true
 

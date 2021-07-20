@@ -8,19 +8,20 @@
 import UIKit
 
 class ColorCodedCardView: UIView {
-    private var closeButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("x", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private var handleBar: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 2
+        view.layer.masksToBounds = true
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .yellow
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Basic Sit"
+        label.text = "Man in the Moon"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -52,13 +53,14 @@ class ColorCodedCardView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
 
-        addSubview(closeButton)
-        closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        closeButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
-        closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
+        addSubview(handleBar)
+        handleBar.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        handleBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        handleBar.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        handleBar.heightAnchor.constraint(equalToConstant: 4).isActive = true
 
         addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 8).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: handleBar.bottomAnchor, constant: 8).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
