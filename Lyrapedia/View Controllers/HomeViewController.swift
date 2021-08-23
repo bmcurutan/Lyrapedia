@@ -53,7 +53,11 @@ extension HomeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
-        cell.imageView.image = #imageLiteral(resourceName: "placeholder")
+        if let imageName = viewModel.cards[indexPath.row].imageName {
+            cell.imageView.image = UIImage(named: imageName)
+        } else {
+            cell.imageView.image = #imageLiteral(resourceName: "placeholder")
+        }
         return cell
     }
 }

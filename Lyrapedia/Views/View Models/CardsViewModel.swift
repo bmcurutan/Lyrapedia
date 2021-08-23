@@ -10,15 +10,14 @@ import UIKit
 class CardsViewModel {
     var title = "Lyrapedia"
 
-    var cards: [Card] {
-        if let localData = CardController.readLocalFile() {
-            CardController.parse(jsonData: localData)
-        }
-        return []
-    }
+    var cards: [Card] = CardController.readLocalFile() ?? []
 }
 
 struct Card: Codable {
-    var title: String
-//    var image: UIImage
+    let title: String
+    let imageName: String?
+    let difficulty: Double?
+    let description: String?
+    let progressions: String?
+    let regressions: String?
 }

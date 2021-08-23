@@ -1,12 +1,26 @@
-{
-   "cards": [
-      {
-         "title": "Man in the Moon",
-         "image": "placeholder"
-      },
-      {
-         "title": "Man in the Moon 2",
-         "image": "placeholder"
-      }
-   ]
-}
+[
+  {
+     "title": "Man in the Moon",
+     "imageName": "placeholder",
+     "difficulty": 0.2,
+     "description": "Man on the Moon description",
+     "progressions": "Man on the Moon progressions",
+     "regressions": "Man on the Moon regressions"
+  },
+  {
+     "title": "Delilah",
+     "imageName": "placeholder",
+     "difficulty": 0.4,
+     "description": "Delilah description",
+     "progressions": "Delilah progressions",
+     "regressions": "Delilah regressions"
+  },
+  {
+     "title": "Drama Queen",
+     "imageName": "placeholder",
+     "difficulty": 0.6,
+     "description": "Delilah description",
+     "progressions": "Delilah progressions",
+     "regressions": "Delilah regressions"
+  }
+]
