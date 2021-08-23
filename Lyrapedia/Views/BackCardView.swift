@@ -11,7 +11,7 @@ import UIKit
 class BackCardView: UIView {
     private var closeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("x", for: .normal)
+        button.setTitle("✕", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -28,7 +28,6 @@ class BackCardView: UIView {
     private var difficultyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
-        label.text = "Difficulty ★☆☆☆☆"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -38,11 +37,6 @@ class BackCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "1. Starting from a stag seat" +
-            "\n2. Place your grip in an opposing grip on the top of the hoop" +
-            "\n3. Transition teh bottom of the hoop so that it is right on the tail bone and the side of the hoop is on one shoulder" +
-            "\n4. Move the top leg up onto the opposite side of the hoop" +
-            "\n5. Move the second leg on the hoop underneath the first leg while applying pressure through the feet and the shoulder to secure the position"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -55,8 +49,8 @@ class BackCardView: UIView {
         return label
     }()
 
-    private var progressionsImage: UIImageView = {
-        let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
+    private var progressionsImageView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -66,9 +60,6 @@ class BackCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "- Pointing your toes" +
-            "\n- Hands-free" +
-            "\n- Combining the seated legs options"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -81,8 +72,8 @@ class BackCardView: UIView {
         return label
     }()
 
-    private var regressionsImage: UIImageView = {
-        let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
+    private var regressionsImageView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -92,11 +83,75 @@ class BackCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "- Keep your hands on the hoop" +
-            "\n- Do not point your toes, keep the feet flat on the side of the hoop"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    convenience init(card: Card) {
+        self.init()
+
+        if let difficulty = card.difficulty {
+            switch difficulty {
+            case 0.2:
+                difficultyLabel.text = "Difficulty ★☆☆☆☆"
+            case 0.4:
+                difficultyLabel.text = "Difficulty ★★☆☆☆"
+            case 0.6:
+                difficultyLabel.text = "Difficulty ★★★☆☆"
+            case 0.8:
+                difficultyLabel.text = "Difficulty ★★★★☆"
+            case 1:
+                difficultyLabel.text = "Difficulty ★★★★★"
+            default:
+                difficultyLabel.text = "Difficulty ☆☆☆☆☆"
+            }
+        }
+
+        if let description = card.description {
+            var text = ""
+            for (i, line) in description.enumerated() {
+                text += line
+                if i < description.count - 1 {
+                    text += "\n"
+                }
+            }
+            descriptionLabel.text = text
+        }
+
+        if let progressionsImageName = card.progressionsImageName {
+            progressionsImageView.image = UIImage(named: progressionsImageName)
+        } else {
+            progressionsImageView.image = #imageLiteral(resourceName: "placeholder")
+        }
+
+        if let progressions = card.progressions {
+            var text = ""
+            for (i, line) in progressions.enumerated() {
+                text += line
+                if i < progressions.count - 1 {
+                    text += "\n"
+                }
+            }
+            progressionsLabel.text = text
+        }
+
+        if let regressionsImageName = card.regressionsImageName {
+            regressionsImageView.image = UIImage(named: regressionsImageName)
+        } else {
+            regressionsImageView.image = #imageLiteral(resourceName: "placeholder")
+        }
+
+        if let regressions = card.regressions {
+            var text = ""
+            for (i, line) in regressions.enumerated() {
+                text += line
+                if i < regressions.count - 1 {
+                    text += "\n"
+                }
+            }
+            regressionsLabel.text = text
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -126,31 +181,31 @@ class BackCardView: UIView {
         progressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: progressionsTitleLabel.rightAnchor, constant: 16).isActive = true
 
-        addSubview(progressionsImage)
-        progressionsImage.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        progressionsImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        progressionsImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        progressionsImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        addSubview(progressionsImageView)
+        progressionsImageView.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+        progressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        progressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        progressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 
         addSubview(progressionsLabel)
         progressionsLabel.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        progressionsLabel.leftAnchor.constraint(equalTo: progressionsImage.rightAnchor, constant: 8).isActive = true
+        progressionsLabel.leftAnchor.constraint(equalTo: progressionsImageView.rightAnchor, constant: 8).isActive = true
         rightAnchor.constraint(equalTo: (progressionsLabel).rightAnchor, constant: 16).isActive = true
 
         addSubview(regressionsTitleLabel)
-        regressionsTitleLabel.topAnchor.constraint(equalTo: progressionsImage.bottomAnchor, constant: 24).isActive = true
+        regressionsTitleLabel.topAnchor.constraint(equalTo: progressionsImageView.bottomAnchor, constant: 24).isActive = true
         regressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: regressionsTitleLabel.rightAnchor, constant: 16).isActive = true
 
-        addSubview(regressionsImage)
-        regressionsImage.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        regressionsImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        regressionsImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        regressionsImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        addSubview(regressionsImageView)
+        regressionsImageView.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+        regressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        regressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        regressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 
         addSubview(regressionsLabel)
         regressionsLabel.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        regressionsLabel.leftAnchor.constraint(equalTo: regressionsImage.rightAnchor, constant: 8).isActive = true
+        regressionsLabel.leftAnchor.constraint(equalTo: regressionsImageView.rightAnchor, constant: 8).isActive = true
         rightAnchor.constraint(equalTo: (regressionsLabel).rightAnchor, constant: 16).isActive = true
     }
 

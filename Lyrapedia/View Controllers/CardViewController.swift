@@ -10,12 +10,6 @@ import UIKit
 class CardViewController: UIViewController {
     private let card: Card
 
-    private var cardView: ColorCodedCardView = {
-        let view = ColorCodedCardView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     init(card: Card) {
         self.card = card
         super.init(nibName: nil, bundle: nil)
@@ -29,6 +23,9 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
+        let cardView = ColorCodedCardView(card: card)
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+
         view.addSubview(cardView)
         cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -41,7 +38,7 @@ class CardViewController: UIViewController {
 
     @objc
     private func cardTapped() {
-        let backCardView = BackCardView()
+        let backCardView = BackCardView(card: card)
         backCardView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backCardView)
         backCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true

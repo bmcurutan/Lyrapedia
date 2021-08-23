@@ -21,14 +21,13 @@ class ColorCodedCardView: UIView {
         let label = UILabel()
         label.backgroundColor = .yellow
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Man in the Moon"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var image: UIImageView = {
-        let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
+    private var imageView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -49,6 +48,16 @@ class ColorCodedCardView: UIView {
         return button
     }()
 
+    convenience init(card: Card) {
+        self.init()
+        titleLabel.text = card.title
+        if let imageName = card.imageName {
+            imageView.image = UIImage(named: imageName)
+        } else {
+            imageView.image = #imageLiteral(resourceName: "placeholder")
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -65,18 +74,18 @@ class ColorCodedCardView: UIView {
         rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
-        addSubview(image)
-        image.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
-        image.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        image.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        image.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        addSubview(imageView)
+        imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
 
         addSubview(previousButton)
-        previousButton.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 16).isActive = true
+        previousButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
         previousButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
 
         addSubview(nextButton)
-        nextButton.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 16).isActive = true
+        nextButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: nextButton.rightAnchor, constant: 16).isActive = true
     }
     

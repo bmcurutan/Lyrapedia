@@ -17,7 +17,9 @@ struct Card: Codable {
     let title: String
     let imageName: String?
     let difficulty: Double?
-    let description: String?
-    let progressions: String?
-    let regressions: String?
+    let description: [String]?
+    let progressionsImageName: String?
+    let progressions: [String]?
+    let regressionsImageName: String?
+    let regressions: [String]?
 }
