@@ -71,7 +71,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
 
-        let cardViewController = CardViewController()
+        let cardViewController = CardViewController(card: viewModel.cards[indexPath.row])
         present(cardViewController, animated: true, completion: nil)
 
 //        let cardView = viewModel.cards[indexPath.row]
