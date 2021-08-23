@@ -17,9 +17,9 @@ class ColorCodedCardView: UIView {
 
     var card: Card? {
         didSet {
-            if let newCard = card {
-                titleLabel.text = newCard.title
-                if let imageName = newCard.imageName {
+            if let card = card {
+                titleLabel.text = card.title
+                if let imageName = card.imageName {
                     imageView.image = UIImage(named: imageName)
                 }
             }
@@ -44,24 +44,37 @@ class ColorCodedCardView: UIView {
         return label
     }()
 
-    private var imageView: UIImageView = {
+    var imageView: UIImageView = {
         let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
+        view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private var previousButton: UIButton = {
+    private var textLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = "Tap on image to flip card over."
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    var previousButton: UIButton = {
         let button = UIButton()
         button.setTitle("< Previous", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.lightGray, for: .disabled)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private var nextButton: UIButton = {
+    var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("Next >", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.lightGray, for: .disabled)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -88,13 +101,18 @@ class ColorCodedCardView: UIView {
         imageView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
 
+        addSubview(textLabel)
+        textLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8).isActive = true
+        textLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: textLabel.rightAnchor, constant: 16).isActive = true
+
         addSubview(previousButton)
-        previousButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
+        previousButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 16).isActive = true
         previousButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
 
         addSubview(nextButton)
-        nextButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
+        nextButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: nextButton.rightAnchor, constant: 16).isActive = true
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }

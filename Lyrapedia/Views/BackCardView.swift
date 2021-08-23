@@ -9,6 +9,8 @@
 import UIKit
 
 class BackCardView: UIView {
+    private var frontCardView: UIView?
+
     private var closeButton: UIButton = {
         let button = UIButton()
         button.setTitle("✕", for: .normal)
@@ -87,8 +89,9 @@ class BackCardView: UIView {
         return label
     }()
 
-    convenience init(card: Card) {
+    convenience init(card: Card, frontCardView: UIView) {
         self.init()
+        self.frontCardView = frontCardView
 
         if let difficulty = card.difficulty {
             switch difficulty {
@@ -215,6 +218,12 @@ class BackCardView: UIView {
 
     @objc
     private func closeButtonTapped() {
-        removeFromSuperview()
+        let toView = frontCardView ?? self
+        UIView.transition(from: self,
+                          to: toView,
+                          duration: 0.6,
+                          options: [.transitionFlipFromLeft, .showHideTransitionViews]) { [weak self] _ in
+                            self?.removeFromSuperview() 
+                          }
     }
 }

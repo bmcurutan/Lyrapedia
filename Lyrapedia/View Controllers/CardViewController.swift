@@ -33,6 +33,8 @@ class CardViewController: UIViewController {
 
         cardView.delegate = self
         cardView.card = cards[index]
+        cardView.previousButton.isEnabled = index > 0 // TODO cleanup, buttons shouldn't be non-private
+        cardView.nextButton.isEnabled = index < cards.count - 1
 
         view.addSubview(cardView)
         cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -41,37 +43,44 @@ class CardViewController: UIViewController {
         view.rightAnchor.constraint(equalTo: cardView.rightAnchor).isActive = true
 
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(cardTapped))
-        cardView.addGestureRecognizer(recognizer)
+        cardView.imageView.addGestureRecognizer(recognizer)
     }
 
     @objc
     private func cardTapped() {
-        let backCardView = BackCardView(card: cards[index])
+        let backCardView = BackCardView(card: cards[index], frontCardView: cardView)
         backCardView.translatesAutoresizingMaskIntoConstraints = false
+
         view.addSubview(backCardView)
         backCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         backCardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: backCardView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: backCardView.rightAnchor).isActive = true
+
+        UIView.transition(from: backCardView,
+                          to: backCardView,
+                          duration: 0.6,
+                          options: [.transitionFlipFromRight, .showHideTransitionViews],
+                          completion: nil)
     }
 }
 
 extension CardViewController: ColorCodedCardViewDelegate {
-    // TODO grey out buttons. shouldn't loop around
-    
     func previousButtonTapped() {
-        index -= 1
-        if index < 0 {
-            index = cards.count - 1 // Jump to end
+        if index - 1 >= 0 {
+            index -= 1
+            cardView.card = cards[index]
         }
-        cardView.card = cards[index]
+        cardView.previousButton.isEnabled = index > 0
+        cardView.nextButton.isEnabled = index < cards.count - 1
     }
 
     func nextButtonTapped() {
-        index += 1
-        if index == cards.count {
-            index = 0 // Reset
+        if index + 1 <= cards.count - 1 {
+            index += 1
+            cardView.card = cards[index]
         }
-        cardView.card = cards[index]
+        cardView.previousButton.isEnabled = index > 0
+        cardView.nextButton.isEnabled = index < cards.count - 1
     }
 }

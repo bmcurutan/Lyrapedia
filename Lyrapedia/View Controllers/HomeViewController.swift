@@ -74,18 +74,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let cardViewController = CardViewController(cards: viewModel.cards, index: indexPath.row)
         present(cardViewController, animated: true, completion: nil)
     }
-
-    @objc
-    private func cardTapped(_ recognizer: UITapGestureRecognizer) {
-        let backCardView = BackCardView()
-        backCardView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(backCardView)
-        backCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        backCardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: backCardView.bottomAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: backCardView.rightAnchor).isActive = true
-    }
 }
 
 private class HomeCollectionViewCell: UICollectionViewCell {
