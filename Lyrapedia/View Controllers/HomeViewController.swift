@@ -71,26 +71,15 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
 
-        let cardViewController = CardViewController(card: viewModel.cards[indexPath.row])
+        let cardViewController = CardViewController(cards: viewModel.cards, index: indexPath.row)
         present(cardViewController, animated: true, completion: nil)
-
-//        let cardView = viewModel.cards[indexPath.row]
-//        cardView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(cardView)
-//        cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//        cardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: cardView.bottomAnchor).isActive = true
-//        view.rightAnchor.constraint(equalTo: cardView.rightAnchor).isActive = true
-//
-//        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(cardTapped(_:)))
-//        tapRecognizer.numberOfTapsRequired = 2
-//        cardView.addGestureRecognizer(tapRecognizer)
     }
 
     @objc
     private func cardTapped(_ recognizer: UITapGestureRecognizer) {
         let backCardView = BackCardView()
         backCardView.translatesAutoresizingMaskIntoConstraints = false
+
         view.addSubview(backCardView)
         backCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         backCardView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

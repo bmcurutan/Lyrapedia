@@ -7,7 +7,25 @@
 
 import UIKit
 
+protocol ColorCodedCardViewDelegate {
+    func previousButtonTapped()
+    func nextButtonTapped()
+}
+
 class ColorCodedCardView: UIView {
+    var delegate: ColorCodedCardViewDelegate?
+
+    var card: Card? {
+        didSet {
+            if let newCard = card {
+                titleLabel.text = newCard.title
+                if let imageName = newCard.imageName {
+                    imageView.image = UIImage(named: imageName)
+                }
+            }
+        }
+    }
+
     private var handleBar: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 2
@@ -27,7 +45,7 @@ class ColorCodedCardView: UIView {
     }()
 
     private var imageView: UIImageView = {
-        let view = UIImageView()
+        let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -47,16 +65,6 @@ class ColorCodedCardView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    convenience init(card: Card) {
-        self.init()
-        titleLabel.text = card.title
-        if let imageName = card.imageName {
-            imageView.image = UIImage(named: imageName)
-        } else {
-            imageView.image = #imageLiteral(resourceName: "placeholder")
-        }
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,10 +91,12 @@ class ColorCodedCardView: UIView {
         addSubview(previousButton)
         previousButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
         previousButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
 
         addSubview(nextButton)
         nextButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: nextButton.rightAnchor, constant: 16).isActive = true
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -96,5 +106,15 @@ class ColorCodedCardView: UIView {
     @objc
     private func closeButtonTapped() {
         removeFromSuperview()
+    }
+
+    @objc
+    private func previousButtonTapped() {
+        delegate?.previousButtonTapped()
+    }
+
+    @objc
+    private func nextButtonTapped() {
+        delegate?.nextButtonTapped()
     }
 }

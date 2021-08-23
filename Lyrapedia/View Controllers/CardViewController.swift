@@ -8,10 +8,18 @@
 import UIKit
 
 class CardViewController: UIViewController {
-    private let card: Card
+    private let cards: [Card]
+    private var index: Int
 
-    init(card: Card) {
-        self.card = card
+    private var cardView: ColorCodedCardView = {
+        let view = ColorCodedCardView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    init(cards: [Card], index: Int) {
+        self.cards = cards
+        self.index = index
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -23,8 +31,8 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        let cardView = ColorCodedCardView(card: card)
-        cardView.translatesAutoresizingMaskIntoConstraints = false
+        cardView.delegate = self
+        cardView.card = cards[index]
 
         view.addSubview(cardView)
         cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -38,7 +46,7 @@ class CardViewController: UIViewController {
 
     @objc
     private func cardTapped() {
-        let backCardView = BackCardView(card: card)
+        let backCardView = BackCardView(card: cards[index])
         backCardView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backCardView)
         backCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -48,3 +56,22 @@ class CardViewController: UIViewController {
     }
 }
 
+extension CardViewController: ColorCodedCardViewDelegate {
+    // TODO grey out buttons. shouldn't loop around
+    
+    func previousButtonTapped() {
+        index -= 1
+        if index < 0 {
+            index = cards.count - 1 // Jump to end
+        }
+        cardView.card = cards[index]
+    }
+
+    func nextButtonTapped() {
+        index += 1
+        if index == cards.count {
+            index = 0 // Reset
+        }
+        cardView.card = cards[index]
+    }
+}
