@@ -13,30 +13,30 @@ class BackCardView: UIView {
 
     private var closeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("✕", for: .normal)
+        button.setTitle("←", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private var titleLabel: UILabel = {
+    private var difficultyLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Description"
+        label.font = UIFont.boldSystemFont(ofSize: 14.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var difficultyLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.text = "Description"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14.0)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class BackCardView: UIView {
 
     private var progressionsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.text = "Progressions"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -59,7 +59,7 @@ class BackCardView: UIView {
 
     private var progressionsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14.0)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +68,7 @@ class BackCardView: UIView {
 
     private var regressionsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.text = "Regressions"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -82,7 +82,7 @@ class BackCardView: UIView {
 
     private var regressionsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14.0)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false

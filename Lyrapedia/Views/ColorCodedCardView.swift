@@ -53,8 +53,8 @@ class ColorCodedCardView: UIView {
 
     private var textLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Tap on image to flip card over."
+        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.text = "Tap on image to flip card over →"
         label.textAlignment = .center
         label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -63,18 +63,22 @@ class ColorCodedCardView: UIView {
 
     var previousButton: UIButton = {
         let button = UIButton()
-        button.setTitle("< Previous", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        button.setTitle("← Previous", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.lightGray, for: .disabled)
+        button.setTitleColor(.darkGray, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     var nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Next >", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        button.setTitle("Next →", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.lightGray, for: .disabled)
+        button.setTitleColor(.darkGray, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
