@@ -37,7 +37,7 @@ class ColorCodedCardView: UIView {
 
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .yellow
+        label.backgroundColor = .accentColor
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class ColorCodedCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14.0)
         label.text = "Tap on image to flip card over →"
         label.textAlignment = .center
-        label.textColor = .gray
+        label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -65,9 +65,9 @@ class ColorCodedCardView: UIView {
         let button = UIButton()
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
         button.setTitle("← Previous", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.lightGray, for: .disabled)
-        button.setTitleColor(.darkGray, for: .highlighted)
+        button.setTitleColor(.primaryButtonColor, for: .normal)
+        button.setTitleColor(.lightGray, for: .disabled) // TODO hide button if disabled
+        button.setTitleColor(.accentColor, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -76,9 +76,9 @@ class ColorCodedCardView: UIView {
         let button = UIButton()
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
         button.setTitle("Next →", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.primaryButtonColor, for: .normal)
         button.setTitleColor(.lightGray, for: .disabled)
-        button.setTitleColor(.darkGray, for: .highlighted)
+        button.setTitleColor(.accentColor, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -137,6 +137,7 @@ class ColorCodedCardView: UIView {
 
     @objc
     private func nextButtonTapped() {
+        // TODO Fix animation - don't just swap out data
         delegate?.nextButtonTapped()
     }
 }

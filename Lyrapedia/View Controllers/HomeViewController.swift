@@ -12,7 +12,9 @@ class HomeViewController: UIViewController {
 
     private var titleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 18.0)
         label.textAlignment = .center
+        label.textColor = .accentColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -87,8 +89,8 @@ private class HomeCollectionViewCell: UICollectionViewCell {
 
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11.0)
-        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 11.0)
+        label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

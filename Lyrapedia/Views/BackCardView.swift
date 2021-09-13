@@ -19,17 +19,27 @@ class BackCardView: UIView {
         return button
     }()
 
-    private var difficultyLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14.0)
+        label.font = UIFont.boldSystemFont(ofSize: 18.0)
+        label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var titleLabel: UILabel = {
+    private var difficultyLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.textColor = .primaryTextColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private var descriptionTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.text = "Description"
+        label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,6 +49,7 @@ class BackCardView: UIView {
         label.font = UIFont.systemFont(ofSize: 14.0)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
+        label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -93,21 +104,28 @@ class BackCardView: UIView {
         self.init()
         self.frontCardView = frontCardView
 
+        titleLabel.text = "\(card.title)"
+
+        let mutableString = NSMutableAttributedString(string: "Difficulty ")
+        var stars = "☆☆☆☆☆"
         if let difficulty = card.difficulty {
             switch difficulty {
             case 0.2:
-                difficultyLabel.text = "Difficulty ★☆☆☆☆"
+                stars = "★☆☆☆☆"
             case 0.4:
-                difficultyLabel.text = "Difficulty ★★☆☆☆"
+                stars = "★★☆☆☆"
             case 0.6:
-                difficultyLabel.text = "Difficulty ★★★☆☆"
+                stars = "★★★☆☆"
             case 0.8:
-                difficultyLabel.text = "Difficulty ★★★★☆"
+                stars = "★★★★☆"
             case 1:
-                difficultyLabel.text = "Difficulty ★★★★★"
+                stars = "★★★★★"
             default:
-                difficultyLabel.text = "Difficulty ☆☆☆☆☆"
+                break
             }
+            mutableString.append(stars)
+            mutableString.setColor(for: stars, with: .accentColor)
+            difficultyLabel.attributedText = mutableString
         }
 
         if let description = card.description {
@@ -165,51 +183,56 @@ class BackCardView: UIView {
         closeButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
+        addSubview(titleLabel)
+        titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 16).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+
         addSubview(difficultyLabel)
-        difficultyLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 16).isActive = true
+        difficultyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
         difficultyLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
 
-        addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: difficultyLabel.bottomAnchor, constant: 16).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 16).isActive = true
+        addSubview(descriptionTitleLabel)
+        descriptionTitleLabel.topAnchor.constraint(equalTo: difficultyLabel.bottomAnchor, constant: 16).isActive = true
+        descriptionTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: descriptionTitleLabel.rightAnchor, constant: 16).isActive = true
 
         addSubview(descriptionLabel)
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 8).isActive = true
         descriptionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: descriptionLabel.rightAnchor, constant: 16).isActive = true
 
-        addSubview(progressionsTitleLabel)
-        progressionsTitleLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24).isActive = true
-        progressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: progressionsTitleLabel.rightAnchor, constant: 16).isActive = true
-
-        addSubview(progressionsImageView)
-        progressionsImageView.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        progressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        progressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        progressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-
-        addSubview(progressionsLabel)
-        progressionsLabel.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        progressionsLabel.leftAnchor.constraint(equalTo: progressionsImageView.rightAnchor, constant: 8).isActive = true
-        rightAnchor.constraint(equalTo: (progressionsLabel).rightAnchor, constant: 16).isActive = true
-
-        addSubview(regressionsTitleLabel)
-        regressionsTitleLabel.topAnchor.constraint(equalTo: progressionsImageView.bottomAnchor, constant: 24).isActive = true
-        regressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: regressionsTitleLabel.rightAnchor, constant: 16).isActive = true
-
-        addSubview(regressionsImageView)
-        regressionsImageView.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        regressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        regressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        regressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-
-        addSubview(regressionsLabel)
-        regressionsLabel.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        regressionsLabel.leftAnchor.constraint(equalTo: regressionsImageView.rightAnchor, constant: 8).isActive = true
-        rightAnchor.constraint(equalTo: (regressionsLabel).rightAnchor, constant: 16).isActive = true
+//        addSubview(regressionsTitleLabel)
+//        regressionsTitleLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24).isActive = true
+//        regressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        rightAnchor.constraint(equalTo: regressionsTitleLabel.rightAnchor, constant: 16).isActive = true
+//
+//        addSubview(regressionsImageView)
+//        regressionsImageView.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        regressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        regressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        regressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+//        addSubview(regressionsLabel)
+//        regressionsLabel.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        regressionsLabel.leftAnchor.constraint(equalTo: regressionsImageView.rightAnchor, constant: 8).isActive = true
+//        rightAnchor.constraint(equalTo: regressionsLabel.rightAnchor, constant: 16).isActive = true
+//
+//        addSubview(progressionsTitleLabel)
+//        progressionsTitleLabel.topAnchor.constraint(equalTo: regressionsImageView.bottomAnchor, constant: 24).isActive = true
+//        progressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        rightAnchor.constraint(equalTo: progressionsTitleLabel.rightAnchor, constant: 16).isActive = true
+//
+//        addSubview(progressionsImageView)
+//        progressionsImageView.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        progressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        bottomAnchor.constraint(equalTo: progressionsImageView.bottomAnchor, constant: 16).isActive = true
+//        progressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        progressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+//        addSubview(progressionsLabel)
+//        progressionsLabel.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        progressionsLabel.leftAnchor.constraint(equalTo: progressionsImageView.rightAnchor, constant: 8).isActive = true
+//        rightAnchor.constraint(equalTo: progressionsLabel.rightAnchor, constant: 16).isActive = true
     }
 
     required init?(coder: NSCoder) {

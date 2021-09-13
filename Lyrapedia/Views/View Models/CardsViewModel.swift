@@ -13,11 +13,17 @@ class CardsViewModel {
     var cards: [Card] = CardController.readLocalFile() ?? []
 }
 
+struct CardSection: Codable {
+    let section: String
+    let cards: [Card]
+}
+
 struct Card: Codable {
     let title: String
     let imageName: String?
     let difficulty: Double?
     let description: [String]?
+    // TODO fast follows
     let progressionsImageName: String?
     let progressions: [String]?
     let regressionsImageName: String?
