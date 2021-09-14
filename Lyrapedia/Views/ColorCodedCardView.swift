@@ -38,7 +38,7 @@ class ColorCodedCardView: UIView {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .darkAccentColor
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .center
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class ColorCodedCardView: UIView {
 
     private var textLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.text = "Tap on image to flip card over →"
         label.textAlignment = .center
         label.textColor = .lightGray
@@ -66,7 +66,7 @@ class ColorCodedCardView: UIView {
 
     var previousButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.setTitle("← Previous", for: .normal)
         button.setTitleColor(.primaryButtonColor, for: .normal)
         button.setTitleColor(.lightGray, for: .disabled) // TODO hide button if disabled
@@ -77,7 +77,7 @@ class ColorCodedCardView: UIView {
 
     var nextButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.setTitle("Next →", for: .normal)
         button.setTitleColor(.primaryButtonColor, for: .normal)
         button.setTitleColor(.lightGray, for: .disabled)

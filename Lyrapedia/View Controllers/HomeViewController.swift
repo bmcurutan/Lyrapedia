@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
 
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18.0)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         label.textColor = .darkAccentColor
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +60,7 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.imageView.image = UIImage(named: imageName)
         } else {
             cell.imageView.image = #imageLiteral(resourceName: "placeholder")
+            cell.imageView.alpha = 0.25
         }
         cell.titleLabel.text = card.title
         return cell
@@ -91,7 +92,7 @@ private class HomeCollectionViewCell: UICollectionViewCell {
 
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 11.0)
+        label.font = UIFont.boldSystemFont(ofSize: 11)
         label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

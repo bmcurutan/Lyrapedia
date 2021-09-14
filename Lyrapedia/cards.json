@@ -1,6 +1,6 @@
 [
   {
-     "title": "Delilah Mount",
+     "title": "DELILAH MOUNT",
      "imageName": "delilah",
      "difficulty": 0.2,
      "description": [
@@ -27,8 +27,8 @@
      ]
   },
   {
-     "title": "Straddle Mount",
-     "imageName": "placeholder",
+     "title": "STRADDLE MOUNT",
+     "imageName": "straddle",
      "difficulty": 0.4,
      "description": [
          "1. This mount can be performed with an opposing grip from teh side or with an overhand grip in teh center of the hoop.",
@@ -39,7 +39,6 @@
   },
   {
      "title": "Pike Mount",
-     "imageName": "placeholder",
      "difficulty": 0.2,
      "description": [
          "1. Start facing the hoop with your hands hip width apart.",
@@ -51,7 +50,6 @@
   },
   {
      "title": "Pull Over Mount",
-     "imageName": "placeholder",
      "difficulty": 0.3,
      "description": [
          "1. Start facing the hoop in an underhand grip position.",
