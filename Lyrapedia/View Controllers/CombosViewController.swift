@@ -20,9 +20,16 @@ class CombosViewController: UIViewController {
         return label
     }()
 
+    private var headerView: ComboHeaderView = {
+        let view = ComboHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.backgroundColor = .backgroundColor
+        view.showsVerticalScrollIndicator = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -30,10 +37,9 @@ class CombosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
-
+        headerView.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(GenerateComboCollectionViewCell.self, forCellWithReuseIdentifier: "GenerateComboCollectionViewCell")
         collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "CardCollectionViewCell")
 
         titleLabel.text = viewModel.title
@@ -42,8 +48,13 @@ class CombosViewController: UIViewController {
         titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
 
+        view.addSubview(headerView)
+        headerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
+        headerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        view.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: 16).isActive = true
+
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
+        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: collectionView.rightAnchor, constant: 16).isActive = true
@@ -52,51 +63,28 @@ class CombosViewController: UIViewController {
 
 extension CombosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        default:
-            return cards.count
-        }
+        return cards.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenerateComboCollectionViewCell", for: indexPath) as! GenerateComboCollectionViewCell
-            cell.delegate = self
-            return cell
-
-        default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath) as! CardCollectionViewCell
-            let card = cards[indexPath.row]
-            if let imageName = card.imageName {
-                cell.imageView.image = UIImage(named: imageName)
-                cell.imageView.alpha = 1
-            } else {
-                cell.imageView.image = #imageLiteral(resourceName: "placeholder")
-                cell.imageView.alpha = 0.25
-            }
-            cell.titleLabel.text = card.title
-            return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath) as! CardCollectionViewCell
+        let card = cards[indexPath.row]
+        if let imageName = card.imageName {
+            cell.imageView.image = UIImage(named: imageName)
+            cell.imageView.alpha = 1
+        } else {
+            cell.imageView.image = #imageLiteral(resourceName: "placeholder")
+            cell.imageView.alpha = 0.25
         }
+        cell.titleLabel.text = card.title
+        return cell
     }
 }
 
 extension CombosViewController: UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.section {
-        case 0:
-            let height: CGFloat = 88 // TODO cleanup, button height + paddings
-            return CGSize(width: collectionView.frame.width, height: height)
-        default:
-            let dimen = collectionView.frame.width
-            return CGSize(width: dimen, height: dimen)
-        }
+        let dimen = collectionView.frame.width
+        return CGSize(width: dimen, height: dimen)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -107,21 +95,21 @@ extension CombosViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension CombosViewController: GenerateComboCollectionViewCellDelegate {
+extension CombosViewController: ComboHeaderViewDelegate {
     func generateButtonTapped() {
         let mountIndex = Int.random(in: 0..<viewModel.mounts.count)
         let poseIndex = Int.random(in: 0..<viewModel.poses.count)
         cards = [viewModel.mounts[mountIndex], viewModel.poses[poseIndex]]
-        collectionView.reloadData() // TODO only reload section 1
+        collectionView.reloadData() 
     }
 }
 
-protocol GenerateComboCollectionViewCellDelegate {
+protocol ComboHeaderViewDelegate {
     func generateButtonTapped()
 }
 
-private class GenerateComboCollectionViewCell: UICollectionViewCell {
-    var delegate: GenerateComboCollectionViewCellDelegate?
+private class ComboHeaderView: UIView {
+    var delegate: ComboHeaderViewDelegate?
 
     private var posesLabel: UILabel = {
         let label = UILabel()
@@ -148,11 +136,11 @@ private class GenerateComboCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(generateButton)
-        generateButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
-        generateButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: generateButton.bottomAnchor, constant: 24).isActive = true
-        contentView.rightAnchor.constraint(equalTo: generateButton.rightAnchor).isActive = true
+        addSubview(generateButton)
+        generateButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        generateButton.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: generateButton.bottomAnchor).isActive = true
+        rightAnchor.constraint(equalTo: generateButton.rightAnchor).isActive = true
         generateButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         generateButton.addTarget(self, action: #selector(generateButtonTapped), for: .touchUpInside)
     }

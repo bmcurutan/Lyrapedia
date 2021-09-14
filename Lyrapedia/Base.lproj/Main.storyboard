@@ -23,9 +23,9 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="K8q-4G-Cud"/>
-                        <segue destination="tcA-Dq-lIX" kind="relationship" relationship="viewControllers" id="fpY-2X-jEg"/>
                         <segue destination="fH2-yO-PH4" kind="relationship" relationship="viewControllers" id="eUt-yJ-wXq"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="WpS-xy-XcA"/>
+                        <segue destination="tcA-Dq-lIX" kind="relationship" relationship="viewControllers" id="fIc-XL-3my"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yac-lg-Fq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
