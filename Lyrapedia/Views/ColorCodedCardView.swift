@@ -21,6 +21,7 @@ class ColorCodedCardView: UIView {
                 titleLabel.text = card.title
                 if let imageName = card.imageName {
                     imageView.image = UIImage(named: imageName)
+                    imageView.alpha = 1
                 } else {
                     imageView.image = UIImage(named: "placeholder")
                     imageView.alpha = 0.25
@@ -91,7 +92,7 @@ class ColorCodedCardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
 
         addSubview(handleBar)
         handleBar.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true

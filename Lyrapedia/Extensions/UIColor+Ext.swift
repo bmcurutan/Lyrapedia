@@ -9,10 +9,10 @@ import UIKit
 
 // https://digitalsynopsis.com/wp-content/uploads/2019/11/color-schemes-palettes-2.png
 extension UIColor {
-//    static var backgroundColor: UIColor {
-//        return UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0) // FAFAFA Very light gray
-//    }
-//
+    static var backgroundColor: UIColor {
+        return UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0) // FAFAFA Very light gray // TODO dark mode
+    }
+
 //    static var tooltipBackgroundColor: UIColor {
 //        return UIColor(red: 0, green: 0, blue: 0, alpha: 0.8) // Black with alpha
 //    }

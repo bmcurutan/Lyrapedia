@@ -29,7 +29,7 @@ class CardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
 
         cardView.delegate = self
         cardView.card = cards[index]

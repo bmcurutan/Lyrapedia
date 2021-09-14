@@ -22,14 +22,14 @@ class CardsViewController: UIViewController {
 
     private var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.topItem?.title = viewModel.title
+        view.backgroundColor = .backgroundColor
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -59,6 +59,7 @@ extension CardsViewController: UICollectionViewDataSource {
         let card = cards[indexPath.row]
         if let imageName = card.imageName {
             cell.imageView.image = UIImage(named: imageName)
+            cell.imageView.alpha = 1
         } else {
             cell.imageView.image = #imageLiteral(resourceName: "placeholder")
             cell.imageView.alpha = 0.25
@@ -70,7 +71,7 @@ extension CardsViewController: UICollectionViewDataSource {
 
 extension CardsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let dimen = UIScreen.main.bounds.width / 3 - 32
+        let dimen = collectionView.frame.width / 3 - 32
         return CGSize(width: dimen, height: dimen)
     }
 
@@ -79,42 +80,5 @@ extension CardsViewController: UICollectionViewDelegateFlowLayout {
 
         let cardViewController = CardViewController(cards: cards, index: indexPath.row)
         present(cardViewController, animated: true, completion: nil)
-    }
-}
-
-private class CardCollectionViewCell: UICollectionViewCell {
-    var imageView: UIImageView = {
-        let view = UIImageView()
-        view.layer.cornerRadius = 16
-        view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 11)
-        label.textColor = .primaryTextColor
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        contentView.addSubview(imageView)
-        imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
-        contentView.rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
-
-//        imageView.addSubview(titleLabel)
-//        titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 4).isActive = true
-//        contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-//        contentView.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 4).isActive = true
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

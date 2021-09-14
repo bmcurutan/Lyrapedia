@@ -8,7 +8,7 @@
 import UIKit
 
 class CardsViewModel {
-    var title = "LYRAPEDIA"
+    var title = "Lyrapedia"
     var mounts: [Card] = CardController.readLocalFile("mounts") ?? []
     var poses: [Card] = CardController.readLocalFile("poses") ?? []
 }

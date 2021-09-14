@@ -176,7 +176,7 @@ class BackCardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
 
         addSubview(closeButton)
         closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
