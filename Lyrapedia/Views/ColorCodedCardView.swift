@@ -37,15 +37,18 @@ class ColorCodedCardView: UIView {
 
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .accentColor
+        label.backgroundColor = .darkAccentColor
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     var imageView: UIImageView = {
         let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

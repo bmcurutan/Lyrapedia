@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18.0)
         label.textAlignment = .center
-        label.textColor = .accentColor
+        label.textColor = .darkAccentColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -83,6 +83,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 private class HomeCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView = {
         let view = UIImageView()
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -104,10 +106,10 @@ private class HomeCollectionViewCell: UICollectionViewCell {
         contentView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
 
-        imageView.addSubview(titleLabel)
-        titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 4).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-        contentView.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 4).isActive = true 
+//        imageView.addSubview(titleLabel)
+//        titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 4).isActive = true
+//        contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+//        contentView.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 4).isActive = true
     }
 
     required init?(coder: NSCoder) {

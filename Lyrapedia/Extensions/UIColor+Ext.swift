@@ -23,11 +23,14 @@ extension UIColor {
 
     static var accentColor: UIColor {
         return UIColor(red: 248/255, green: 99/255, blue: 81/255, alpha: 1.0) // #f86351 orange
-//        return UIColor(red: 209/255, green: 25/255, blue: 62/255, alpha: 1.0) // #d1193e dark red
     }
 
-    static var secondaryAccentColor: UIColor {
+    static var lightAccentColor: UIColor {
         return UIColor(red: 251/255, green: 164/255, blue: 101/255, alpha: 1.0) // #fba465 Light orange
+    }
+
+    static var darkAccentColor: UIColor {
+        return UIColor(red: 209/255, green: 25/255, blue: 62/255, alpha: 1.0) // #d1193e dark red
     }
 
     static var primaryTextColor: UIColor {
