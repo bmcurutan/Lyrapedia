@@ -9,8 +9,8 @@ import UIKit
 
 class CardsViewModel {
     var title = "LYRAPEDIA"
-
-    var cards: [Card] = CardController.readLocalFile() ?? []
+    var mounts: [Card] = CardController.readLocalFile("mounts") ?? []
+    var poses: [Card] = CardController.readLocalFile("poses") ?? []
 }
 
 struct CardSection: Codable {

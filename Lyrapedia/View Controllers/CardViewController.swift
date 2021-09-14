@@ -69,7 +69,7 @@ extension CardViewController: ColorCodedCardViewDelegate {
     func previousButtonTapped() {
         if index - 1 >= 0 {
             index -= 1
-            cardView.card = cards[index]
+            cardView.card = cards[index] // TODO animation
         }
         cardView.previousButton.isEnabled = index > 0
         cardView.nextButton.isEnabled = index < cards.count - 1
@@ -78,7 +78,7 @@ extension CardViewController: ColorCodedCardViewDelegate {
     func nextButtonTapped() {
         if index + 1 <= cards.count - 1 {
             index += 1
-            cardView.card = cards[index]
+            cardView.card = cards[index] // TODO animation
         }
         cardView.previousButton.isEnabled = index > 0
         cardView.nextButton.isEnabled = index < cards.count - 1

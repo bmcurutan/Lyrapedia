@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  CardsViewController.swift
 //  Lyrapedia
 //
 //  Created by Bianca Curutan on 6/7/21.
@@ -7,8 +7,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-    private var viewModel = CardsViewModel()
+class CardsViewController: UIViewController {
+    internal var viewModel = CardsViewModel()
+    internal var cards: [Card] = []
 
     private var titleLabel: UILabel = {
         let label = UILabel()
@@ -32,7 +33,7 @@ class HomeViewController: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "CardCollectionViewCell")
 
         titleLabel.text = viewModel.title
         view.addSubview(titleLabel)
@@ -48,14 +49,14 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource {
+extension CardsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.cards.count
+        return cards.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
-        let card = viewModel.cards[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath) as! CardCollectionViewCell
+        let card = cards[indexPath.row]
         if let imageName = card.imageName {
             cell.imageView.image = UIImage(named: imageName)
         } else {
@@ -67,7 +68,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+extension CardsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let dimen = UIScreen.main.bounds.width / 3 - 32
         return CGSize(width: dimen, height: dimen)
@@ -76,12 +77,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
 
-        let cardViewController = CardViewController(cards: viewModel.cards, index: indexPath.row)
+        let cardViewController = CardViewController(cards: cards, index: indexPath.row)
         present(cardViewController, animated: true, completion: nil)
     }
 }
 
-private class HomeCollectionViewCell: UICollectionViewCell {
+private class CardCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 16
