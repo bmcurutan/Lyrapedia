@@ -25,7 +25,7 @@ class BasicCardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
 
         addSubview(image)
         image.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

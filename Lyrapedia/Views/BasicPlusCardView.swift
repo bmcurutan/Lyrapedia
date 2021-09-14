@@ -35,7 +35,7 @@ class BasicPlusCardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
 
         addSubview(image)
         image.topAnchor.constraint(equalTo: topAnchor, constant: 24).isActive = true

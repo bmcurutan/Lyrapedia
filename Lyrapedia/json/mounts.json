@@ -1,0 +1,65 @@
+[
+  {
+     "title": "DELILAH MOUNT",
+     "imageName": "delilah",
+     "difficulty": 0.2,
+     "description": [
+         "1. Start facing the hoop in an opposing grip 1/3 of the way up the hoop",
+         "2. Stepping 1 foot under the hoop's anchor point, pull with your arms and use your abs to bring your second leg onto the hoop. Hook the knee over the bottom bar from the outside to the inside of the hoop.",
+         "3. Extend the arms and lift the chest while dropping the bag leg for \"Delilah\".",
+         "4. Climb your hands up the side of the hoop.",
+         "5. Once at the top you will have one hand on each side of the hoop.",
+         "6. Pull up into the hoop so it rests mid-hamstring of your hooked leg. This is \"Birdie Prep\" position."
+     ],
+     "progressionsImageName": "placeholder",
+     "progressions": [
+         "- Straight-leg Delilah mount",
+         "- Single leg Hocks mount",
+         "- One-handed",
+         "- Taking a bind with the free leg",
+         "- Delilah roll"
+     ],
+     "regressionsImageName": "placeholder",
+     "regressions": [
+         "- Get the instructor's assistance to get the leg onto the bar",
+         "- Practice Delilah using the bottom bar",
+         "- Climb the hands up and down the side bar as a conditioning exercise"
+     ]
+  },
+  {
+     "title": "STRADDLE MOUNT",
+     "imageName": "straddle",
+     "difficulty": 0.4,
+     "description": [
+         "1. This mount can be performed with an opposing grip from the side or with an overhand grip in the center of the hoop.",
+         "2. Stepping 1 foot under the hoop's anchor point, pull with your arms and use your abs to bring your knees into your chest.",
+         "3. Tilt back while lengthening your arms and bringing your hips under the bar.",
+         "4. Open your legs to a straddle position while keeping your abs engaged."
+     ]
+  },
+  {
+     "title": "Pike Mount",
+     "difficulty": 0.2,
+     "description": [
+         "1. Start facing the hoop with your hands hip width apart.",
+         "2. Pull up with your arms while tucking your knees into your chest and pulling your hips up under the bottom of the hoop as your head and shoulder drop back.",
+         "3. Your head lowers towards the floor while your arms lengthen.",
+         "4. Feed your feet under the bar but between your arms.",
+         "5. Lengthen your legs to a pike position."
+     ]
+  },
+  {
+     "title": "Pull Over Mount",
+     "difficulty": 0.3,
+     "description": [
+         "1. Start facing the hoop in an underhand grip position.",
+         "2. Stepping 1 foot under the hoop's anchor point, kick the second leg up into the hoop followed by the first leg, sliding the hoop up the leg towards the hip crease.",
+         "3. Allow th bottom bar to rest on the hip flexor.",
+         "4. Straighten both legs towards the floor, keeping the thighs drawn into the chest.",
+         "5. If comfortable wit the new balance, release your arms towards the floor.",
+         "6. Grab ankles and pull thigh towards chest into a pike position.",
+         "7. Grab the bottom bar about 1/3 of the way up on each side and begin to lift the chest while engaging the glutes.",
+         "8. Lift the chest the rest of the way, coming to a horizontal position."
+     ]
+  }
+]

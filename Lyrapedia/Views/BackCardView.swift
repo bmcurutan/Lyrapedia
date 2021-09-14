@@ -9,120 +9,244 @@
 import UIKit
 
 class BackCardView: UIView {
+    private var frontCardView: UIView?
+
+    private var closeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("←", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 18.0)
+        label.textColor = .primaryTextColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private var difficultyLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.textColor = .primaryTextColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private var descriptionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.text = "Description"
+        label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14.0)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private var regressionsTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.text = "Regressions"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private var regressionsImage: UIImageView = {
-        let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    private var regressionsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private var progressionsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.text = "Progressions"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var progressionsImage: UIImageView = {
-        let view = UIImageView(image: #imageLiteral(resourceName: "placeholder"))
+    private var progressionsImageView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private var progressionsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14.0)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
+    private var regressionsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.text = "Regressions"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private var regressionsImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private var regressionsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    convenience init(card: Card, frontCardView: UIView) {
+        self.init()
+        self.frontCardView = frontCardView
+
+        titleLabel.text = "\(card.title)"
+
+        let mutableString = NSMutableAttributedString(string: "Difficulty ")
+        var stars = "☆☆☆☆☆"
+        if let difficulty = card.difficulty {
+            switch difficulty {
+            case 0.2:
+                stars = "★☆☆☆☆"
+            case 0.4:
+                stars = "★★☆☆☆"
+            case 0.6:
+                stars = "★★★☆☆"
+            case 0.8:
+                stars = "★★★★☆"
+            case 1:
+                stars = "★★★★★"
+            default:
+                break
+            }
+            mutableString.append(stars)
+            mutableString.setColor(for: stars, with: .accentColor)
+            difficultyLabel.attributedText = mutableString
+        }
+
+        if let description = card.description {
+            var text = ""
+            for (i, line) in description.enumerated() {
+                text += line
+                if i < description.count - 1 {
+                    text += "\n"
+                }
+            }
+            descriptionLabel.text = text
+        }
+
+        if let progressionsImageName = card.progressionsImageName {
+            progressionsImageView.image = UIImage(named: progressionsImageName)
+        } else {
+            progressionsImageView.image = #imageLiteral(resourceName: "placeholder")
+        }
+
+        if let progressions = card.progressions {
+            var text = ""
+            for (i, line) in progressions.enumerated() {
+                text += line
+                if i < progressions.count - 1 {
+                    text += "\n"
+                }
+            }
+            progressionsLabel.text = text
+        }
+
+        if let regressionsImageName = card.regressionsImageName {
+            regressionsImageView.image = UIImage(named: regressionsImageName)
+        } else {
+            regressionsImageView.image = #imageLiteral(resourceName: "placeholder")
+        }
+
+        if let regressions = card.regressions {
+            var text = ""
+            for (i, line) in regressions.enumerated() {
+                text += line
+                if i < regressions.count - 1 {
+                    text += "\n"
+                }
+            }
+            regressionsLabel.text = text
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
+
+        addSubview(closeButton)
+        closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        closeButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
+        closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 16).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 16).isActive = true
+
+        addSubview(difficultyLabel)
+        difficultyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
+        difficultyLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+
+        addSubview(descriptionTitleLabel)
+        descriptionTitleLabel.topAnchor.constraint(equalTo: difficultyLabel.bottomAnchor, constant: 16).isActive = true
+        descriptionTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: descriptionTitleLabel.rightAnchor, constant: 16).isActive = true
 
         addSubview(descriptionLabel)
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 8).isActive = true
         descriptionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: descriptionLabel.rightAnchor, constant: 16).isActive = true
 
-        addSubview(regressionsTitleLabel)
-        regressionsTitleLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24).isActive = true
-        regressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: regressionsTitleLabel.rightAnchor, constant: 16).isActive = true
-
-        addSubview(regressionsImage)
-        regressionsImage.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        regressionsImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        regressionsImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        regressionsImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-
-        addSubview(regressionsLabel)
-        regressionsLabel.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        regressionsLabel.leftAnchor.constraint(equalTo: regressionsImage.rightAnchor, constant: 8).isActive = true
-        rightAnchor.constraint(equalTo: (regressionsLabel).rightAnchor, constant: 16).isActive = true
-
-        addSubview(progressionsTitleLabel)
-        progressionsTitleLabel.topAnchor.constraint(equalTo: regressionsLabel.bottomAnchor, constant: 24).isActive = true
-        progressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: progressionsTitleLabel.rightAnchor, constant: 16).isActive = true
-
-        addSubview(progressionsImage)
-        progressionsImage.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        progressionsImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        progressionsImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        progressionsImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-
-        addSubview(progressionsLabel)
-        progressionsLabel.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
-        progressionsLabel.leftAnchor.constraint(equalTo: progressionsImage.rightAnchor, constant: 8).isActive = true
-        rightAnchor.constraint(equalTo: (progressionsLabel).rightAnchor, constant: 16).isActive = true
+//        addSubview(regressionsTitleLabel)
+//        regressionsTitleLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24).isActive = true
+//        regressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        rightAnchor.constraint(equalTo: regressionsTitleLabel.rightAnchor, constant: 16).isActive = true
+//
+//        addSubview(regressionsImageView)
+//        regressionsImageView.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        regressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        regressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        regressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+//        addSubview(regressionsLabel)
+//        regressionsLabel.topAnchor.constraint(equalTo: regressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        regressionsLabel.leftAnchor.constraint(equalTo: regressionsImageView.rightAnchor, constant: 8).isActive = true
+//        rightAnchor.constraint(equalTo: regressionsLabel.rightAnchor, constant: 16).isActive = true
+//
+//        addSubview(progressionsTitleLabel)
+//        progressionsTitleLabel.topAnchor.constraint(equalTo: regressionsImageView.bottomAnchor, constant: 24).isActive = true
+//        progressionsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        rightAnchor.constraint(equalTo: progressionsTitleLabel.rightAnchor, constant: 16).isActive = true
+//
+//        addSubview(progressionsImageView)
+//        progressionsImageView.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        progressionsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+//        bottomAnchor.constraint(equalTo: progressionsImageView.bottomAnchor, constant: 16).isActive = true
+//        progressionsImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        progressionsImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+//        addSubview(progressionsLabel)
+//        progressionsLabel.topAnchor.constraint(equalTo: progressionsTitleLabel.bottomAnchor, constant: 8).isActive = true
+//        progressionsLabel.leftAnchor.constraint(equalTo: progressionsImageView.rightAnchor, constant: 8).isActive = true
+//        rightAnchor.constraint(equalTo: progressionsLabel.rightAnchor, constant: 16).isActive = true
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc
+    private func closeButtonTapped() {
+        let toView = frontCardView ?? self
+        UIView.transition(from: self,
+                          to: toView,
+                          duration: 0.6,
+                          options: [.transitionFlipFromLeft, .showHideTransitionViews]) { [weak self] _ in
+                            self?.removeFromSuperview() 
+                          }
     }
 }
