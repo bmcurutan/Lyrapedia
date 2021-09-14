@@ -12,6 +12,7 @@
 		670D429A26F0607C00DB8C19 /* PosesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670D429926F0607C00DB8C19 /* PosesViewController.swift */; };
 		670D42A026F1554F00DB8C19 /* CombosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670D429F26F1554F00DB8C19 /* CombosViewController.swift */; };
 		670D42A526F1576200DB8C19 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670D42A426F1576200DB8C19 /* CardCollectionViewCell.swift */; };
+		670D42AA26F164A400DB8C19 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670D42A926F164A400DB8C19 /* UIButton+Ext.swift */; };
 		670D5289268454FE00606CFD /* mounts.json in Resources */ = {isa = PBXBuildFile; fileRef = 670D5288268454FE00606CFD /* mounts.json */; };
 		670D528E2684580300606CFD /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670D528D2684580300606CFD /* CardController.swift */; };
 		67578C75266F2F3E0073F394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67578C74266F2F3E0073F394 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		670D429926F0607C00DB8C19 /* PosesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosesViewController.swift; sourceTree = "<group>"; };
 		670D429F26F1554F00DB8C19 /* CombosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombosViewController.swift; sourceTree = "<group>"; };
 		670D42A426F1576200DB8C19 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		670D42A926F164A400DB8C19 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		670D5288268454FE00606CFD /* mounts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mounts.json; sourceTree = "<group>"; };
 		670D528D2684580300606CFD /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
 		67578C71266F2F3E0073F394 /* Lyrapedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lyrapedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 			children = (
 				679B4C2F26EF2C8600B16282 /* NSMutableAttributedString+Ext.swift */,
 				679B4C2C26EF29A900B16282 /* UIColor+Ext.swift */,
+				670D42A926F164A400DB8C19 /* UIButton+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				670D42A526F1576200DB8C19 /* CardCollectionViewCell.swift in Sources */,
 				67578C75266F2F3E0073F394 /* AppDelegate.swift in Sources */,
 				670D528E2684580300606CFD /* CardController.swift in Sources */,
+				670D42AA26F164A400DB8C19 /* UIButton+Ext.swift in Sources */,
 				67578C94266F32EA0073F394 /* CardsViewModel.swift in Sources */,
 				67578C98266F3D450073F394 /* ColorCodedCardView.swift in Sources */,
 				67578C77266F2F3E0073F394 /* SceneDelegate.swift in Sources */,

@@ -7,9 +7,16 @@
 
 import UIKit
 
-class CardViewController: UIViewController {
+class CardViewController: UIViewController, ColorCodedCardViewDelegate {
     private let cards: [Card]
     private var index: Int
+
+    var showNavigation: Bool = true {
+        didSet {
+            cardView.showPreviousButton(showNavigation)
+            cardView.showNextButton(showNavigation)
+        }
+    }
 
     private var cardView: ColorCodedCardView = {
         let view = ColorCodedCardView()
@@ -33,8 +40,8 @@ class CardViewController: UIViewController {
 
         cardView.delegate = self
         cardView.card = cards[index]
-        cardView.previousButton.isEnabled = index > 0 // TODO cleanup, buttons shouldn't be non-private
-        cardView.nextButton.isEnabled = index < cards.count - 1
+        showPreviousButton()
+        showNextButton()
 
         view.addSubview(cardView)
         cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -44,6 +51,14 @@ class CardViewController: UIViewController {
 
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(cardTapped))
         cardView.imageView.addGestureRecognizer(recognizer)
+    }
+
+    private func showPreviousButton() {
+        cardView.showPreviousButton(index > 0 && showNavigation)
+    }
+
+    private func showNextButton() {
+        cardView.showNextButton(index < cards.count - 1 && showNavigation)
     }
 
     @objc
@@ -63,16 +78,14 @@ class CardViewController: UIViewController {
                           options: [.transitionFlipFromRight, .showHideTransitionViews],
                           completion: nil)
     }
-}
 
-extension CardViewController: ColorCodedCardViewDelegate {
     func previousButtonTapped() {
         if index - 1 >= 0 {
             index -= 1
             cardView.card = cards[index] // TODO animation
         }
-        cardView.previousButton.isEnabled = index > 0
-        cardView.nextButton.isEnabled = index < cards.count - 1
+        showPreviousButton()
+        showNextButton()
     }
 
     func nextButtonTapped() {
@@ -80,7 +93,7 @@ extension CardViewController: ColorCodedCardViewDelegate {
             index += 1
             cardView.card = cards[index] // TODO animation
         }
-        cardView.previousButton.isEnabled = index > 0
-        cardView.nextButton.isEnabled = index < cards.count - 1
+        showPreviousButton()
+        showNextButton()
     }
 }

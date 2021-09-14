@@ -91,6 +91,7 @@ extension CombosViewController: UICollectionViewDelegateFlowLayout {
         collectionView.deselectItem(at: indexPath, animated: true)
 
         let cardViewController = CardViewController(cards: cards, index: indexPath.row)
+        cardViewController.showNavigation = false
         present(cardViewController, animated: true, completion: nil)
     }
 }
@@ -125,11 +126,12 @@ private class ComboHeaderView: UIView {
     private var generateButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 24
-        button.backgroundColor = .primaryButtonColor
+        button.clipsToBounds = true
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.setTitle("GENERATE", for: .normal)
         button.setTitleColor(.white, for: .normal)
-//        button.setTitleColor(.accentColor, for: .highlighted) // TODO
+        button.setBackgroundColor(.primaryButtonColor, for: .normal)
+        button.setBackgroundColor(.accentColor, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

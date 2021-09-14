@@ -68,23 +68,21 @@ class ColorCodedCardView: UIView {
         return label
     }()
 
-    var previousButton: UIButton = {
+    private var previousButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.setTitle("← Previous", for: .normal)
         button.setTitleColor(.primaryButtonColor, for: .normal)
-        button.setTitleColor(.lightGray, for: .disabled) // TODO hide button if disabled
         button.setTitleColor(.accentColor, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    var nextButton: UIButton = {
+    private var nextButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.setTitle("Next →", for: .normal)
         button.setTitleColor(.primaryButtonColor, for: .normal)
-        button.setTitleColor(.lightGray, for: .disabled)
         button.setTitleColor(.accentColor, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -132,6 +130,14 @@ class ColorCodedCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func showPreviousButton(_ show: Bool = true) {
+        previousButton.isHidden = !show
+    }
+
+    func showNextButton(_ show: Bool = true) {
+        nextButton.isHidden = !show
+    }
+
     @objc
     private func closeButtonTapped() {
         removeFromSuperview()
@@ -144,7 +150,6 @@ class ColorCodedCardView: UIView {
 
     @objc
     private func nextButtonTapped() {
-        // TODO Fix animation - don't just swap out data
         delegate?.nextButtonTapped()
     }
 }
