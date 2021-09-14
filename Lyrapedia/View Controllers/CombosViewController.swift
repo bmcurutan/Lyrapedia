@@ -34,10 +34,18 @@ class CombosViewController: UIViewController {
         return view
     }()
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        headerView.textField.becomeFirstResponder()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
+
         headerView.delegate = self
+        headerView.textField.placeholder = "1-\(viewModel.poses.count)"
+
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "CardCollectionViewCell")
@@ -49,12 +57,12 @@ class CombosViewController: UIViewController {
         view.rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
 
         view.addSubview(headerView)
-        headerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
+        headerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24).isActive = true
         headerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         view.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: 16).isActive = true
 
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16).isActive = true
+        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 24).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: collectionView.rightAnchor, constant: 16).isActive = true
@@ -98,6 +106,13 @@ extension CombosViewController: UICollectionViewDelegateFlowLayout {
 
 extension CombosViewController: ComboHeaderViewDelegate {
     func generateButtonTapped() {
+        guard let text = headerView.textField.text,
+              let input = Int(text) else { return }
+
+        if input < 1 || input > viewModel.poses.count {
+            headerView.showErrorState()
+            return
+        }
         let mountIndex = Int.random(in: 0..<viewModel.mounts.count)
         let poseIndex = Int.random(in: 0..<viewModel.poses.count)
         cards = [viewModel.mounts[mountIndex], viewModel.poses[poseIndex]]
@@ -115,13 +130,24 @@ private class ComboHeaderView: UIView {
     private var posesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "# of Poses"
+        label.text = "# of Poses:"
         label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    // TODO poses picker
+    var textField: UITextField = {
+        let textField = UITextField()
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+        textField.backgroundColor = .white
+        textField.isUserInteractionEnabled = true
+        textField.keyboardType = .numberPad
+        textField.textAlignment = .center
+        textField.tintColor = .accentColor
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
 
     private var generateButton: UIButton = {
         let button = UIButton()
@@ -138,8 +164,18 @@ private class ComboHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        addSubview(posesLabel)
+        posesLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        centerXAnchor.constraint(equalTo: posesLabel.rightAnchor, constant: 4).isActive = true
+
+        addSubview(textField)
+        textField.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        textField.leftAnchor.constraint(equalTo: centerXAnchor,constant: 4).isActive = true
+        textField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4).isActive = true
+
         addSubview(generateButton)
-        generateButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        generateButton.topAnchor.constraint(equalTo: posesLabel.bottomAnchor, constant: 16).isActive = true
         generateButton.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         bottomAnchor.constraint(equalTo: generateButton.bottomAnchor).isActive = true
         rightAnchor.constraint(equalTo: generateButton.rightAnchor).isActive = true
@@ -153,6 +189,13 @@ private class ComboHeaderView: UIView {
 
     @objc
     private func generateButtonTapped() {
+        showErrorState(false) // Reset state
+        textField.resignFirstResponder()
         delegate?.generateButtonTapped()
+    }
+
+    func showErrorState(_ show: Bool = true) {
+        textField.becomeFirstResponder()
+        textField.layer.borderColor = show ? UIColor.accentColor.cgColor : UIColor.clear.cgColor 
     }
 }
