@@ -113,9 +113,19 @@ extension CombosViewController: ComboHeaderViewDelegate {
             headerView.showErrorState()
             return
         }
+
+        // Only need to generate one mount
         let mountIndex = Int.random(in: 0..<viewModel.mounts.count)
-        let poseIndex = Int.random(in: 0..<viewModel.poses.count)
-        cards = [viewModel.mounts[mountIndex], viewModel.poses[poseIndex]]
+        cards = [viewModel.mounts[mountIndex]]
+
+        var set: Set<Int> = []
+        while set.count < input {
+            set.insert(Int.random(in: 0...viewModel.poses.count))
+        }
+        set.forEach {
+            cards.append(viewModel.poses[$0 - 1])
+        }
+
         collectionView.reloadData() 
     }
 }
@@ -196,6 +206,6 @@ private class ComboHeaderView: UIView {
 
     func showErrorState(_ show: Bool = true) {
         textField.becomeFirstResponder()
-        textField.layer.borderColor = show ? UIColor.accentColor.cgColor : UIColor.clear.cgColor 
+        textField.layer.borderColor = show ? UIColor.accentColor.cgColor : UIColor.clear.cgColor
     }
 }
