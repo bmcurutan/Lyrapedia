@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO tab bar icons
+// TODO app logo
 class CombosViewController: UIViewController {
     private var viewModel = CardsViewModel()
     private var cards: [Card] = []
