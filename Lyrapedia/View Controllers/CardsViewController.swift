@@ -59,10 +59,8 @@ extension CardsViewController: UICollectionViewDataSource {
         let card = cards[indexPath.row]
         if let imageName = card.imageName {
             cell.imageView.image = UIImage(named: imageName)
-            cell.imageView.alpha = 1
         } else {
             cell.imageView.image = #imageLiteral(resourceName: "placeholder")
-            cell.imageView.alpha = 0.25
         }
         cell.titleLabel.text = card.title
         return cell

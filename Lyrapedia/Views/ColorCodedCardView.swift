@@ -21,10 +21,8 @@ class ColorCodedCardView: UIView {
                 titleLabel.text = card.title
                 if let imageName = card.imageName {
                     imageView.image = UIImage(named: imageName)
-                    imageView.alpha = 1
                 } else {
                     imageView.image = UIImage(named: "placeholder")
-                    imageView.alpha = 0.25
                 }
             }
         }

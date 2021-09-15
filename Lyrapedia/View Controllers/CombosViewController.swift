@@ -34,11 +34,6 @@ class CombosViewController: UIViewController {
         return view
     }()
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        headerView.textField.becomeFirstResponder()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
@@ -62,7 +57,7 @@ class CombosViewController: UIViewController {
         view.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: 16).isActive = true
 
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 24).isActive = true
+        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: collectionView.rightAnchor, constant: 16).isActive = true
@@ -79,10 +74,8 @@ extension CombosViewController: UICollectionViewDataSource {
         let card = cards[indexPath.row]
         if let imageName = card.imageName {
             cell.imageView.image = UIImage(named: imageName)
-            cell.imageView.alpha = 1
         } else {
             cell.imageView.image = #imageLiteral(resourceName: "placeholder")
-            cell.imageView.alpha = 0.25
         }
         cell.titleLabel.text = card.title
         return cell
@@ -106,26 +99,30 @@ extension CombosViewController: UICollectionViewDelegateFlowLayout {
 
 extension CombosViewController: ComboHeaderViewDelegate {
     func generateButtonTapped() {
-        guard let text = headerView.textField.text,
-              let input = Int(text) else { return }
+        // # poses based on user input
+        guard let text = headerView.textField.text else { return }
 
-        if input < 1 || input > viewModel.poses.count {
-            headerView.showErrorState()
-            return
-        }
-
-        // Only need to generate one mount
+        // Only need to show one mount
         let mountIndex = Int.random(in: 0..<viewModel.mounts.count)
         cards = [viewModel.mounts[mountIndex]]
 
-        var set: Set<Int> = []
-        while set.count < input {
-            set.insert(Int.random(in: 0...viewModel.poses.count))
+        if text.isEmpty {
+            // Just show one pose
+            let poseIndex = Int.random(in: 0..<viewModel.poses.count)
+            cards.append(viewModel.poses[poseIndex])
+        } else if let input = Int(text),
+                  (1...viewModel.poses.count).contains(input) {
+            var set: Set<Int> = []
+            while set.count < input {
+                set.insert(Int.random(in: 0...viewModel.poses.count - 1))
+            }
+            set.forEach {
+                cards.append(viewModel.poses[$0])
+            }
+        } else {
+            headerView.showErrorState()
+            cards = []
         }
-        set.forEach {
-            cards.append(viewModel.poses[$0 - 1])
-        }
-
         collectionView.reloadData() 
     }
 }
@@ -148,9 +145,11 @@ private class ComboHeaderView: UIView {
 
     var textField: UITextField = {
         let textField = UITextField()
+        textField.layer.borderColor = UIColor.clear.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
         textField.backgroundColor = .white
+        textField.font = UIFont.systemFont(ofSize: 16)
         textField.isUserInteractionEnabled = true
         textField.keyboardType = .numberPad
         textField.textAlignment = .center
@@ -172,25 +171,39 @@ private class ComboHeaderView: UIView {
         return button
     }()
 
+    private var separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        addSubview(posesLabel)
-        posesLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        centerXAnchor.constraint(equalTo: posesLabel.rightAnchor, constant: 4).isActive = true
 
         addSubview(textField)
         textField.topAnchor.constraint(equalTo: topAnchor).isActive = true
         textField.leftAnchor.constraint(equalTo: centerXAnchor,constant: 4).isActive = true
         textField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4).isActive = true
+        textField.heightAnchor.constraint(equalToConstant: 24).isActive = true
+
+        addSubview(posesLabel)
+        posesLabel.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
+        centerXAnchor.constraint(equalTo: posesLabel.rightAnchor, constant: 4).isActive = true
 
         addSubview(generateButton)
         generateButton.topAnchor.constraint(equalTo: posesLabel.bottomAnchor, constant: 16).isActive = true
         generateButton.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: generateButton.bottomAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: generateButton.bottomAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: generateButton.rightAnchor).isActive = true
         generateButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         generateButton.addTarget(self, action: #selector(generateButtonTapped), for: .touchUpInside)
+
+        addSubview(separator)
+        separator.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: separator.bottomAnchor).isActive = true
+        rightAnchor.constraint(equalTo: separator.rightAnchor).isActive = true
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 
     required init?(coder: NSCoder) {

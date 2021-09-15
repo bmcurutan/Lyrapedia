@@ -4,11 +4,27 @@
      "imageName": "man_in_the_moon",
      "difficulty": 0.2,
      "description": [
-         "1. Starting from a stag seat.",
+         "1. // TODO Starting from a stag seat.",
          "2. Place your grip in an opposing grip on the top of the hoop.",
          "3. Transition the bottom of the hoop so that it is right on the tail bone and the side of the hoop is on one shoulder.",
          "4. Move the top leg up onto the opposite side of the hoop.",
          "5. Move the second leg on the hoop underneath the first leg while applying pressure through the feet and the shoulder to secure the position."
+     ]
+  },
+  {
+     "title": "PIKE",
+     "imageName": "pike",
+     "difficulty": 0.4,
+     "description": [
+         "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+     ]
+  },
+  {
+     "title": "BIRD'S NEST",
+     "imageName": "placeholder",
+     "difficulty": 0.4,
+     "description": [
+         "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
      ]
   }
 ]
