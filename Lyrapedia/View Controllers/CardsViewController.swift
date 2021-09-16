@@ -69,7 +69,7 @@ extension CardsViewController: UICollectionViewDataSource {
 
 extension CardsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let dimen = collectionView.frame.width / 3 - 8
+        let dimen = collectionView.frame.width / 2 - 8
         return CGSize(width: dimen, height: dimen)
     }
 
