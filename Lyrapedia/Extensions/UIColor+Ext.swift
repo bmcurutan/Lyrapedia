@@ -37,15 +37,15 @@ extension UIColor {
         return UIColor(red: 58/255, green: 7/255, blue: 81/255, alpha: 1.0) // #3a0751 Dark purple
     }
 
-//    static var secondaryTextColor: UIColor {
-//        return UIColor.lightGray
-//    }
-//
+    static var secondaryTextColor: UIColor {
+        return UIColor.lightGray
+    }
+
     static var primaryButtonColor: UIColor {
         return UIColor(red: 238/255, green: 62/255, blue: 56/255, alpha: 1.0) // #ee3e38 orange-red
     }
 
-//    static var highlightColor: UIColor {
-//        return UIColor(red: 233/255, green: 196/255, blue: 106/255, alpha: 1.0) // #E9C46A Yellow
-//    }
+    static var highlightColor: UIColor {
+        return UIColor(red: 242/255, green: 200/255, blue: 92/255, alpha: 1.0) // #f2c85b yellow
+    }
 }

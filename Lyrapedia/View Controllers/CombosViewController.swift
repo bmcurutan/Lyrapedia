@@ -9,6 +9,7 @@ import UIKit
 
 // TODO tab bar icons
 // TODO app logo
+// Used as home page
 class CombosViewController: UIViewController {
     private var viewModel = CardsViewModel()
     private var cards: [Card] = []
@@ -75,11 +76,9 @@ extension CombosViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath) as! CardCollectionViewCell
         let card = cards[indexPath.row]
         if let imageName = card.imageName {
-            cell.imageView.image = UIImage(named: imageName)
-        } else {
-            cell.imageView.image = #imageLiteral(resourceName: "placeholder")
+            cell.image = UIImage(named: imageName)
         }
-        cell.titleLabel.text = card.title
+        cell.title = card.title
         return cell
     }
 }
