@@ -119,16 +119,12 @@ class BackCardView: UIView {
         var stars = "☆☆☆☆☆"
         if let difficulty = card.difficulty {
             switch difficulty {
-            case 0.2:
-                stars = "★☆☆☆☆"
-            case 0.4:
-                stars = "★★☆☆☆"
-            case 0.6:
-                stars = "★★★☆☆"
-            case 0.8:
-                stars = "★★★★☆"
             case 1:
-                stars = "★★★★★"
+                stars = "★☆☆"
+            case 2:
+                stars = "★★☆"
+            case 3:
+                stars = "★★★"
             default:
                 break
             }
