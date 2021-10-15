@@ -78,7 +78,7 @@ class BackCardView: UIView {
 
     private var progressionsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ class BackCardView: UIView {
 
     private var regressionsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.text = "Regressions"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -101,7 +101,7 @@ class BackCardView: UIView {
 
     private var regressionsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -114,7 +114,7 @@ class BackCardView: UIView {
 
         titleLabel.text = "\(card.title)"
 
-        let mutableString = NSMutableAttributedString(string: "Difficulty ")
+        let mutableString = NSMutableAttributedString(string: "Difficulty ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)])
         var shapes = "▱▱▱"
         if let difficulty = card.difficulty {
             switch difficulty {

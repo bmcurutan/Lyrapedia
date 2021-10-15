@@ -32,7 +32,7 @@ class CombosViewController: UIViewController {
 
     private var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        view.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16 right: 0)
+        view.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         view.backgroundColor = .backgroundColor
         view.showsVerticalScrollIndicator = false
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -142,7 +142,8 @@ private class ComboHeaderView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Practice mounting the lyra and transitioning through different poses with a generated training sequence. Enter the number of poses to include:"
+        label.text = "Practice mounting the lyra and transitioning through different poses with a generated training sequence.\n\nEnter the number of poses to include:"
+        label.textAlignment = .center
         label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
