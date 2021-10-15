@@ -94,7 +94,7 @@ extension CombosViewController: UICollectionViewDelegateFlowLayout {
         collectionView.deselectItem(at: indexPath, animated: true)
 
         let cardViewController = CardViewController(cards: cards, index: indexPath.row)
-        cardViewController.showNavigation = false
+//        cardViewController.showNavigation = false
         present(cardViewController, animated: true, completion: nil)
     }
 }
