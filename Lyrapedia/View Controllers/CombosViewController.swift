@@ -31,6 +31,7 @@ class CombosViewController: UIViewController {
 
     private var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
         view.backgroundColor = .backgroundColor
         view.showsVerticalScrollIndicator = false
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -55,12 +56,12 @@ class CombosViewController: UIViewController {
         view.rightAnchor.constraint(equalTo: titleLabel.rightAnchor).isActive = true
 
         view.addSubview(headerView)
-        headerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24).isActive = true
-        headerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        view.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: 16).isActive = true
+        headerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
+        headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: headerView.rightAnchor).isActive = true
 
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16).isActive = true
+        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: collectionView.rightAnchor, constant: 16).isActive = true
@@ -135,10 +136,12 @@ protocol ComboHeaderViewDelegate {
 private class ComboHeaderView: UIView {
     var delegate: ComboHeaderViewDelegate?
 
-    private var posesLabel: UILabel = {
+    private var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "# of Poses:"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.text = "Practice mounting the lyra and transitioning through different poses with a generated training sequence. Enter the number of poses to include:"
         label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -182,21 +185,22 @@ private class ComboHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        addSubview(subtitleLabel)
+        subtitleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        subtitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: subtitleLabel.rightAnchor, constant: 16).isActive = true
+
         addSubview(textField)
-        textField.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        textField.leftAnchor.constraint(equalTo: centerXAnchor,constant: 4).isActive = true
-        textField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4).isActive = true
+        textField.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8).isActive = true
+        textField.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        textField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2 ).isActive = true
         textField.heightAnchor.constraint(equalToConstant: 24).isActive = true
 
-        addSubview(posesLabel)
-        posesLabel.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
-        centerXAnchor.constraint(equalTo: posesLabel.rightAnchor, constant: 4).isActive = true
-
         addSubview(generateButton)
-        generateButton.topAnchor.constraint(equalTo: posesLabel.bottomAnchor, constant: 16).isActive = true
-        generateButton.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        generateButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 16).isActive = true
+        generateButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         bottomAnchor.constraint(equalTo: generateButton.bottomAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: generateButton.rightAnchor).isActive = true
+        rightAnchor.constraint(equalTo: generateButton.rightAnchor, constant: 16).isActive = true
         generateButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         generateButton.addTarget(self, action: #selector(generateButtonTapped), for: .touchUpInside)
 
@@ -204,7 +208,7 @@ private class ComboHeaderView: UIView {
         separator.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         bottomAnchor.constraint(equalTo: separator.bottomAnchor).isActive = true
         rightAnchor.constraint(equalTo: separator.rightAnchor).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
     }
 
     required init?(coder: NSCoder) {

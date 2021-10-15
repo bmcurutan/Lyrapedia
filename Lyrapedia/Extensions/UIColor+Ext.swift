@@ -45,7 +45,7 @@ extension UIColor {
         return UIColor(red: 238/255, green: 62/255, blue: 56/255, alpha: 1.0) // #ee3e38 orange-red
     }
 
-    static var highlightColor: UIColor {
-        return UIColor(red: 242/255, green: 200/255, blue: 92/255, alpha: 1.0) // #f2c85b yellow
-    }
+//    static var highlightColor: UIColor {
+//        return UIColor(red: 242/255, green: 200/255, blue: 92/255, alpha: 1.0) // #f2c85b yellow
+//    }
 }

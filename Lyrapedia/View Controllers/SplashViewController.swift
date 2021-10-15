@@ -32,8 +32,8 @@ class SplashViewController: UIViewController {
 
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.text = "Disclaimer"
+        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.text = "DISCLAIMER"
         label.textColor = .secondaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,7 +41,7 @@ class SplashViewController: UIViewController {
 
     private var textLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.text = "All information is intended solely for general supplementary knowledge and may not be used as a substitute for professional training. User acknowledges that the information contained in Lyrapedia is to be used at your own risk."
@@ -75,7 +75,7 @@ class SplashViewController: UIViewController {
 
         view.addSubview(titleLabel)
         titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).isActive = true
+        textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
         view.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 16).isActive = true
     }
 

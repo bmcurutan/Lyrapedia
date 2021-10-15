@@ -5,7 +5,6 @@
 //  Created by Bianca Curutan on 6/7/21.
 //
 
-
 import UIKit
 
 class BackCardView: UIView {
@@ -116,20 +115,20 @@ class BackCardView: UIView {
         titleLabel.text = "\(card.title)"
 
         let mutableString = NSMutableAttributedString(string: "Difficulty ")
-        var stars = "☆☆☆☆☆"
+        var shapes = "▱▱▱"
         if let difficulty = card.difficulty {
             switch difficulty {
             case 1:
-                stars = "★☆☆"
+                shapes = "▰▱▱"
             case 2:
-                stars = "★★☆"
+                shapes = "▰▰▱"
             case 3:
-                stars = "★★★"
+                shapes = "▰▰▰"
             default:
                 break
             }
-            mutableString.append(stars)
-            mutableString.setColor(for: stars, with: .accentColor)
+            mutableString.append(NSMutableAttributedString(string: shapes, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22)]))
+            mutableString.setColor(for: shapes, with: .accentColor)
             difficultyLabel.attributedText = mutableString
         }
 

@@ -30,7 +30,6 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.highlightColor.withAlphaComponent(0.4)
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textAlignment = .right
         label.textColor = .primaryTextColor
