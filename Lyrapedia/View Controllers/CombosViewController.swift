@@ -9,6 +9,7 @@ import UIKit
 
 // TODO tab bar icons
 // TODO app logo
+// TODO add gradient if there's more stuff to scroll in collection view
 // Used as home page
 class CombosViewController: UIViewController {
     private var viewModel = CardsViewModel()
@@ -31,7 +32,7 @@ class CombosViewController: UIViewController {
 
     private var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        view.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        view.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16 right: 0)
         view.backgroundColor = .backgroundColor
         view.showsVerticalScrollIndicator = false
         view.translatesAutoresizingMaskIntoConstraints = false
