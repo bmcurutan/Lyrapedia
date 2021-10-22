@@ -68,15 +68,15 @@ class SplashViewController: UIViewController {
         enterButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         enterButton.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
 
-        view.addSubview(textLabel)
-        textLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 8).isActive = true
-        view.rightAnchor.constraint(equalTo: textLabel.rightAnchor, constant: 16).isActive = true
-
         view.addSubview(titleLabel)
+        view.addSubview(textLabel)
         titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
         view.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 16).isActive = true
+
+        textLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 16).isActive = true
+        view.rightAnchor.constraint(equalTo: textLabel.rightAnchor, constant: 16).isActive = true
     }
 
     @objc private func enterButtonTapped() {

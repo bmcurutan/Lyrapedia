@@ -60,7 +60,7 @@ extension CardsViewController: UICollectionViewDataSource {
         if let imageName = card.imageName {
             cell.image = UIImage(named: imageName)
         }
-        // cell.titleLabel.text = card.title
+        cell.title = card.title
         return cell
     }
 }

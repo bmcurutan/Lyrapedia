@@ -28,6 +28,13 @@ class CardCollectionViewCell: UICollectionViewCell {
         return view
     }()
 
+    private var labelBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 12)
@@ -46,8 +53,15 @@ class CardCollectionViewCell: UICollectionViewCell {
         contentView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
 
+        imageView.addSubview(labelBackground)
         imageView.addSubview(titleLabel)
-        contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).isActive = true
+        labelBackground.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: labelBackground.bottomAnchor).isActive = true
+        contentView.rightAnchor.constraint(equalTo: labelBackground.rightAnchor).isActive = true
+        labelBackground.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, constant: 8).isActive = true
+
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
         contentView.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 8).isActive = true
     }
 
