@@ -19,7 +19,7 @@ class ColorCodedCardView: UIView {
                 } else {
                     imageView.image = UIImage(named: "placeholder")
                 }
-                let mutableString = NSMutableAttributedString(string: "Difficulty ")
+                let mutableString = NSMutableAttributedString(string: "Difficulty  ")
                 var shapes = "▱▱▱"
                 if let difficulty = card.difficulty {
                     switch difficulty {

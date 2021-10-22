@@ -114,7 +114,7 @@ class BackCardView: UIView {
 
         titleLabel.text = "\(card.title)"
 
-        let mutableString = NSMutableAttributedString(string: "Difficulty ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)])
+        let mutableString = NSMutableAttributedString(string: "Difficulty  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)])
         var shapes = "▱▱▱"
         if let difficulty = card.difficulty {
             switch difficulty {
