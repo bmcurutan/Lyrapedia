@@ -2,6 +2,7 @@
   {
      "title": "MAN IN THE MOON",
      "imageName": "man_in_the_moon",
+     "isMount": false,
      "difficulty": 1,
      "description": [
          "1. // TODO Starting from a stag seat.",
@@ -12,8 +13,9 @@
      ]
   },
   {
-     "title": "PIKE THROUGH",
+     "title": "PIKE",
      "imageName": "pike",
+     "isMount": true,
      "difficulty": 1,
      "description": [
          "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -22,6 +24,7 @@
   {
      "title": "BIRD'S NEST",
      "imageName": "birds_nest",
+     "isMount": false,
      "difficulty": 1,
      "description": [
          "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -30,6 +33,7 @@
   {
      "title": "GAZELLE",
      "imageName": "gazelle",
+     "isMount": false,
      "difficulty": 1,
      "description": [
          "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -38,6 +42,7 @@
   {
      "title": "CLOSED DELILAH",
      "imageName": "delilah",
+     "isMount": true,
      "difficulty": 1,
      "description": [
          "1. // TODO Start facing the hoop in an opposing grip 1/3 of the way up the hoop",
@@ -50,11 +55,13 @@
   },
   {
      "title": "OPEN DELILAH",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": true
   },
   {
      "title": "CANDLESTICK",
      "imageName": "placeholder",
+     "isMount": false,
      "difficulty": 2,
      "description": [
          "1. // TODO Start facing the hoop in an opposing grip 1/3 of the way up the hoop",
@@ -67,49 +74,71 @@
   },
   {
      "title": "HOCKS HANG",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "SPLITS AWAY",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "SPLITS UNDER THE BAR",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "HIGH ARABESQUE",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "BIRDIE",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "CRADLE",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "SINGLE LEG CRADLE",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "AMAZON",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "MERMAID",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },{
       "title": "ANGEL",
-      "imageName": "placeholder"
+      "imageName": "placeholder",
+      "isMount": false
    },
   {
      "title": "SIDE STAR",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
   {
      "title": "STAR ON THE BAR",
-     "imageName": "placeholder"
+     "imageName": "placeholder",
+     "isMount": false
   },
+  {
+     "title": "PULL OVER",
+     "imageName": "pull_over",
+     "isMount": true
+  },
+  {
+     "title": "STRADDLE",
+     "imageName": "straddle",
+     "isMount": true
+  }
 ]

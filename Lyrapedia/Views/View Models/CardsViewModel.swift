@@ -9,7 +9,6 @@ import UIKit
 
 class CardsViewModel {
     var title = "Lyrapedia"
-    var mounts: [Card] = CardController.readLocalFile("mounts") ?? []
     var poses: [Card] = CardController.readLocalFile("poses") ?? []
 }
 
@@ -21,6 +20,7 @@ struct CardSection: Codable {
 struct Card: Codable {
     let title: String
     let imageName: String?
+    let isMount: Bool
     let difficulty: Double?
     let description: [String]?
     // TODO fast follows
