@@ -22,7 +22,7 @@ class SplashViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 36)
         label.text = "Lyrapedia"
-        label.textColor = .darkAccentColor
+        label.textColor = .accentColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -62,7 +62,7 @@ class ColorCodedCardView: UIView {
 
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .darkAccentColor
+        label.backgroundColor = .accentColor
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .center
         label.textColor = .white

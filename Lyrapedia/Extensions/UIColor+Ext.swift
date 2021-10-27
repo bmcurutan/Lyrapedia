@@ -22,11 +22,13 @@ extension UIColor {
     }
 
     static var accentColor: UIColor {
-        return UIColor(red: 248/255, green: 99/255, blue: 81/255, alpha: 1.0) // #f86351 orange
+        return UIColor(red: 238/255, green: 62/255, blue: 56/255, alpha: 1.0) // #ee3e38 orange-red
+//        return UIColor(red: 248/255, green: 99/255, blue: 81/255, alpha: 1.0) // #f86351 orange
     }
 
     static var lightAccentColor: UIColor {
-        return UIColor(red: 251/255, green: 164/255, blue: 101/255, alpha: 1.0) // #fba465 Light orange
+        return UIColor(red: 248/255, green: 99/255, blue: 81/255, alpha: 1.0) // #f86351 orange
+//        return UIColor(red: 251/255, green: 164/255, blue: 101/255, alpha: 1.0) // #fba465 Light orange
     }
 
     static var darkAccentColor: UIColor {

@@ -15,7 +15,7 @@ class CardsViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
-        label.textColor = .darkAccentColor
+        label.textColor = .accentColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
