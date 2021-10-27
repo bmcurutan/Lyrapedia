@@ -44,7 +44,7 @@ class CombosViewController: UIViewController {
         view.backgroundColor = .backgroundColor
 
         headerView.delegate = self
-        headerView.textField.placeholder = "1-\(viewModel.poses.count)"
+        headerView.textFieldLabel.text = "Enter the number of lyra poses to include (1-\(viewModel.poses.count)):"
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -66,6 +66,13 @@ class CombosViewController: UIViewController {
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: collectionView.rightAnchor, constant: 16).isActive = true
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        headerView.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func dismissKeyboard() {
+        headerView.textField.resignFirstResponder()
     }
 }
 
@@ -95,7 +102,6 @@ extension CombosViewController: UICollectionViewDelegateFlowLayout {
         collectionView.deselectItem(at: indexPath, animated: true)
 
         let cardViewController = CardViewController(cards: cards, index: indexPath.row)
-//        cardViewController.showNavigation = false
         present(cardViewController, animated: true, completion: nil)
     }
 }
@@ -105,14 +111,9 @@ extension CombosViewController: ComboHeaderViewDelegate {
         // # poses based on user input
         guard let text = headerView.textField.text else { return }
 
-        // Only need to show one mount
-        let mountIndex = Int.random(in: 0..<viewModel.mounts.count)
-        cards = [viewModel.mounts[mountIndex]]
-
         if text.isEmpty {
-            // Just show one pose
-            let poseIndex = Int.random(in: 0..<viewModel.poses.count)
-            cards.append(viewModel.poses[poseIndex])
+            headerView.showErrorState()
+            cards = []
         } else if let input = Int(text),
                   (1...viewModel.poses.count).contains(input) {
             var set: Set<Int> = []
@@ -137,12 +138,22 @@ protocol ComboHeaderViewDelegate {
 private class ComboHeaderView: UIView {
     var delegate: ComboHeaderViewDelegate?
 
+    // TODO hide this description after first view
     private var subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Practice mounting the lyra and transitioning through different poses with a generated training sequence.\n\nEnter the number of poses to include:"
+        label.text = "Practice transitioning through different poses with a generated training sequence."
+        label.textAlignment = .center
+        label.textColor = .primaryTextColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    var textFieldLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .center
         label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -151,13 +162,14 @@ private class ComboHeaderView: UIView {
 
     var textField: UITextField = {
         let textField = UITextField()
-        textField.layer.borderColor = UIColor.clear.cgColor
+        textField.layer.borderColor = UIColor.borderColor.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
         textField.backgroundColor = .white
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.isUserInteractionEnabled = true
         textField.keyboardType = .numberPad
+        textField.text = "1" // Default
         textField.textAlignment = .center
         textField.tintColor = .accentColor
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -179,7 +191,7 @@ private class ComboHeaderView: UIView {
 
     private var separator: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .borderColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -192,8 +204,13 @@ private class ComboHeaderView: UIView {
         subtitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: subtitleLabel.rightAnchor, constant: 16).isActive = true
 
+        addSubview(textFieldLabel)
+        textFieldLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 16).isActive = true
+        textFieldLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: textFieldLabel.rightAnchor, constant: 16).isActive = true
+
         addSubview(textField)
-        textField.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8).isActive = true
+        textField.topAnchor.constraint(equalTo: textFieldLabel.bottomAnchor, constant: 8).isActive = true
         textField.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         textField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2 ).isActive = true
         textField.heightAnchor.constraint(equalToConstant: 24).isActive = true
@@ -210,7 +227,7 @@ private class ComboHeaderView: UIView {
         separator.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         bottomAnchor.constraint(equalTo: separator.bottomAnchor).isActive = true
         rightAnchor.constraint(equalTo: separator.rightAnchor).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 
     required init?(coder: NSCoder) {
@@ -226,6 +243,7 @@ private class ComboHeaderView: UIView {
 
     func showErrorState(_ show: Bool = true) {
         textField.becomeFirstResponder()
-        textField.layer.borderColor = show ? UIColor.accentColor.cgColor : UIColor.clear.cgColor
+        textField.layer.borderColor = show ? UIColor.accentColor.cgColor : UIColor.borderColor.cgColor
+        textFieldLabel.textColor = show ? .accentColor : .primaryTextColor
     }
 }

@@ -17,6 +17,16 @@ class SplashViewController: UIViewController {
         return view
     }()
 
+    // TODO remove once logo is ready
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 36)
+        label.text = "Lyrapedia"
+        label.textColor = .darkAccentColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private var enterButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 24
@@ -30,7 +40,7 @@ class SplashViewController: UIViewController {
         return button
     }()
 
-    private var titleLabel: UILabel = {
+    private var disclaimerTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.text = "DISCLAIMER"
@@ -39,7 +49,7 @@ class SplashViewController: UIViewController {
         return label
     }()
 
-    private var textLabel: UILabel = {
+    private var disclaimerTextLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.lineBreakMode = .byWordWrapping
@@ -61,6 +71,10 @@ class SplashViewController: UIViewController {
         imageView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
 
+        imageView.addSubview(titleLabel)
+        titleLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+
         view.addSubview(enterButton)
         enterButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
         enterButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
@@ -68,15 +82,15 @@ class SplashViewController: UIViewController {
         enterButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         enterButton.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
 
-        view.addSubview(titleLabel)
-        view.addSubview(textLabel)
-        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
-        view.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 16).isActive = true
+        view.addSubview(disclaimerTitleLabel)
+        view.addSubview(disclaimerTextLabel)
+        disclaimerTitleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        disclaimerTextLabel.topAnchor.constraint(equalTo: disclaimerTitleLabel.bottomAnchor, constant: 4).isActive = true
+        view.rightAnchor.constraint(equalTo: disclaimerTitleLabel.rightAnchor, constant: 16).isActive = true
 
-        textLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 16).isActive = true
-        view.rightAnchor.constraint(equalTo: textLabel.rightAnchor, constant: 16).isActive = true
+        disclaimerTextLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: disclaimerTextLabel.bottomAnchor, constant: 16).isActive = true
+        view.rightAnchor.constraint(equalTo: disclaimerTextLabel.rightAnchor, constant: 16).isActive = true
     }
 
     @objc private func enterButtonTapped() {

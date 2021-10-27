@@ -45,7 +45,7 @@ class ColorCodedCardView: UIView {
                             text += "\n"
                         }
                     }
-                    descriptionLabel.text = text
+                    descriptionTextView.text = text
                 }
             }
         }
@@ -96,14 +96,13 @@ class ColorCodedCardView: UIView {
         return label
     }()
 
-    private var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.textColor = .primaryTextColor
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private var descriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = .clear
+        textView.font = UIFont.systemFont(ofSize: 14)
+        textView.textColor = .primaryTextColor
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
 
     override init(frame: CGRect) {
@@ -138,10 +137,11 @@ class ColorCodedCardView: UIView {
         descriptionTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         rightAnchor.constraint(equalTo: descriptionTitleLabel.rightAnchor, constant: 16).isActive = true
 
-        addSubview(descriptionLabel)
-        descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 8).isActive = true
-        descriptionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: descriptionLabel.rightAnchor, constant: 16).isActive = true
+        addSubview(descriptionTextView)
+        descriptionTextView.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 8).isActive = true
+        descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        bottomAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: descriptionTextView.rightAnchor, constant: 16).isActive = true
     }
     
     required init?(coder: NSCoder) {

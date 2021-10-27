@@ -30,7 +30,7 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     private var labelBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.4)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
