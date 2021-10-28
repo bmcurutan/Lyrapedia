@@ -89,7 +89,7 @@ class SplashViewController: UIViewController {
         view.rightAnchor.constraint(equalTo: disclaimerTitleLabel.rightAnchor, constant: 16).isActive = true
 
         disclaimerTextLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: disclaimerTextLabel.bottomAnchor, constant: 16).isActive = true
+        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: disclaimerTextLabel.bottomAnchor, constant: 24).isActive = true
         view.rightAnchor.constraint(equalTo: disclaimerTextLabel.rightAnchor, constant: 16).isActive = true
     }
 

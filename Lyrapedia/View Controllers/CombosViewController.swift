@@ -109,14 +109,14 @@ extension CombosViewController: UICollectionViewDelegateFlowLayout {
 extension CombosViewController: ComboHeaderViewDelegate {
     func generateButtonTapped() {
         // # poses based on user input
-        guard let text = headerView.textField.text else { return }
-
-        if text.isEmpty {
+        guard let text = headerView.textField.text, !text.isEmpty else {
             headerView.showErrorState()
-            cards = []
-        } else if let input = Int(text),
-                  (1...viewModel.poses.count).contains(input) {
-            var set: Set<Int> = []
+            return
+        }
+
+        cards = []
+        if let input = Int(text), (1...viewModel.poses.count).contains(input) {
+            var set: Set<Int> = [] // No duplicates
             while set.count < input {
                 set.insert(Int.random(in: 0...viewModel.poses.count - 1))
             }
@@ -125,7 +125,6 @@ extension CombosViewController: ComboHeaderViewDelegate {
             }
         } else {
             headerView.showErrorState()
-            cards = []
         }
         collectionView.reloadData() 
     }

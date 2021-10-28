@@ -148,8 +148,7 @@ class ColorCodedCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc
-    private func closeButtonTapped() {
+    @objc private func closeButtonTapped() {
         removeFromSuperview()
     }
 }
