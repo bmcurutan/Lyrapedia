@@ -58,7 +58,7 @@
                         <viewLayoutGuide key="safeArea" id="msj-sA-w5u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Combos" image="square.and.arrow.up.on.square" catalog="system" id="FHy-xX-V4T" userLabel="Combos"/>
+                    <tabBarItem key="tabBarItem" title="Combos" image="circlebadge.2" catalog="system" id="FHy-xX-V4T" userLabel="Combos"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oW0-lz-6F9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +74,7 @@
                         <viewLayoutGuide key="safeArea" id="4kh-y6-Twb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Poses" image="square.and.arrow.up.fill" catalog="system" id="Yvx-8Z-44L"/>
+                    <tabBarItem key="tabBarItem" title="Poses" image="circlebadge" catalog="system" id="Yvx-8Z-44L"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZX-u7-XZ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,8 +82,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
-        <image name="square.and.arrow.up.on.square" catalog="system" width="117" height="128"/>
+        <image name="circlebadge" catalog="system" width="128" height="120"/>
+        <image name="circlebadge.2" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
