@@ -22,7 +22,8 @@ struct Card: Codable {
     let imageName: String?
     let isMount: Bool
     let difficulty: Double?
-    let description: [String]?
+    let tips: [String]?
+    let variations: [String]?
     // TODO fast follows
     let progressionsImageName: String?
     let progressions: [String]?

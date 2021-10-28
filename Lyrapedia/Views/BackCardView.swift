@@ -43,16 +43,16 @@ class BackCardView: UIView {
         return label
     }()
 
-    private var descriptionTitleLabel: UILabel = {
+    private var tipsTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.text = "Description"
+        label.text = "Tips"
         label.textColor = .primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var descriptionLabel: UILabel = {
+    private var tipsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
@@ -132,15 +132,15 @@ class BackCardView: UIView {
             difficultyLabel.attributedText = mutableString
         }
 
-        if let description = card.description {
+        if let tips = card.tips {
             var text = ""
-            for (i, line) in description.enumerated() {
+            for (i, line) in tips.enumerated() {
                 text += line
-                if i < description.count - 1 {
+                if i < tips.count - 1 {
                     text += "\n"
                 }
             }
-            descriptionLabel.text = text
+            tipsLabel.text = text
         }
 
         if let progressionsImageName = card.progressionsImageName {
@@ -201,15 +201,15 @@ class BackCardView: UIView {
         difficultyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
         difficultyLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
 
-        addSubview(descriptionTitleLabel)
-        descriptionTitleLabel.topAnchor.constraint(equalTo: difficultyLabel.bottomAnchor, constant: 16).isActive = true
-        descriptionTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: descriptionTitleLabel.rightAnchor, constant: 16).isActive = true
+        addSubview(tipsTitleLabel)
+        tipsTitleLabel.topAnchor.constraint(equalTo: difficultyLabel.bottomAnchor, constant: 16).isActive = true
+        tipsTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: tipsTitleLabel.rightAnchor, constant: 16).isActive = true
 
-        addSubview(descriptionLabel)
-        descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 8).isActive = true
-        descriptionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        rightAnchor.constraint(equalTo: descriptionLabel.rightAnchor, constant: 16).isActive = true
+        addSubview(tipsLabel)
+        tipsLabel.topAnchor.constraint(equalTo: tipsTitleLabel.bottomAnchor, constant: 8).isActive = true
+        tipsLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        rightAnchor.constraint(equalTo: tipsLabel.rightAnchor, constant: 16).isActive = true
 
 //        addSubview(regressionsTitleLabel)
 //        regressionsTitleLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24).isActive = true

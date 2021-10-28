@@ -4,21 +4,25 @@
      "imageName": "man_in_the_moon",
      "isMount": false,
      "difficulty": 1,
-     "description": [
-         "1. // TODO Starting from a stag seat.",
-         "2. Place your grip in an opposing grip on the top of the hoop.",
-         "3. Transition the bottom of the hoop so that it is right on the tail bone and the side of the hoop is on one shoulder.",
-         "4. Move the top leg up onto the opposite side of the hoop.",
-         "5. Move the second leg on the hoop underneath the first leg while applying pressure through the feet and the shoulder to secure the position."
+     "tips": [
+         "- Start from a seated pose",
+         "- Shift to rest the tail bone on the bottom bar and press one shoulder against the side of the lyra",
+         "- Press one foot against the opposite side of the lyra; move the other foot under the first foot and press it against that side of the lyra"
+     ],
+     "variations": [
+        "- Press the balls of the feet aginst the side of the lyra instead of pressing flat feet",
+        "- Straighten the legs and cross the ankles so that the tops of the feet press against the front and back of the lyra"
      ]
   },
   {
-     "title": "PIKE",
+     "title": "PIKE UNDER THE BAR",
      "imageName": "pike",
      "isMount": true,
      "difficulty": 1,
-     "description": [
-         "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+     "tips": [
+         "- Start under the bar or from a knee hang",
+         "- Do an inverted tuck under the bar, then straighten the legs and point the toes",
+         "- Lift the hips up - don't let the body sag"
      ]
   },
   {
@@ -26,7 +30,7 @@
      "imageName": "birds_nest",
      "isMount": false,
      "difficulty": 1,
-     "description": [
+     "tips": [
          "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
      ]
   },
@@ -35,7 +39,7 @@
      "imageName": "gazelle",
      "isMount": false,
      "difficulty": 1,
-     "description": [
+     "tips": [
          "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
      ]
   },
@@ -43,15 +47,7 @@
      "title": "CLOSED DELILAH",
      "imageName": "delilah",
      "isMount": true,
-     "difficulty": 1,
-     "description": [
-         "1. // TODO Start facing the hoop in an opposing grip 1/3 of the way up the hoop",
-         "2. Stepping 1 foot under the hoop's anchor point, pull with your arms and use your abs to bring your second leg onto the hoop. Hook the knee over the bottom bar from the outside to the inside of the hoop.",
-         "3. Extend the arms and lift the chest while dropping the bag leg for \"Delilah\".",
-         "4. Climb your hands up the side of the hoop.",
-         "5. Once at the top you will have one hand on each side of the hoop.",
-         "6. Pull up into the hoop so it rests mid-hamstring of your hooked leg. This is \"Birdie Prep\" position."
-     ]
+     "difficulty": 1
   },
   {
      "title": "OPEN DELILAH",
@@ -62,15 +58,7 @@
      "title": "CANDLESTICK",
      "imageName": "placeholder",
      "isMount": false,
-     "difficulty": 2,
-     "description": [
-         "1. // TODO Start facing the hoop in an opposing grip 1/3 of the way up the hoop",
-         "2. Stepping 1 foot under the hoop's anchor point, pull with your arms and use your abs to bring your second leg onto the hoop. Hook the knee over the bottom bar from the outside to the inside of the hoop.",
-         "3. Extend the arms and lift the chest while dropping the bag leg for \"Delilah\".",
-         "4. Climb your hands up the side of the hoop.",
-         "5. Once at the top you will have one hand on each side of the hoop.",
-         "6. Pull up into the hoop so it rests mid-hamstring of your hooked leg. This is \"Birdie Prep\" position."
-     ]
+     "difficulty": 2
   },
   {
      "title": "HOCKS HANG",
