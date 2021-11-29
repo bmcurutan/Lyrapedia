@@ -7,7 +7,7 @@
 
 import UIKit
 
-// https://digitalsynopsis.com/wp-content/uploads/2019/11/color-schemes-palettes-2.png
+// https://digitalsynopsis.com/wp-content/uploads/2019/11/color-schemes-palettes-2.png + 800080
 extension UIColor {
     static var backgroundColor: UIColor {
         return UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0) // FAFAFA Very light gray // TODO dark mode

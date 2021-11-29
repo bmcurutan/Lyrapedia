@@ -1,5 +1,14 @@
 [
   {
+     "title": "BIRD'S NEST",
+     "imageName": "birds_nest",
+     "isMount": false,
+     "difficulty": 1,
+     "tips": [
+         "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+     ]
+  },
+  {
      "title": "MAN IN THE MOON",
      "imageName": "man_in_the_moon",
      "isMount": false,
@@ -15,6 +24,11 @@
      ]
   },
   {
+     "title": "STRADDLE",
+     "imageName": "straddle",
+     "isMount": true
+  },
+  {
      "title": "PIKE UNDER THE BAR",
      "imageName": "pike",
      "isMount": true,
@@ -23,15 +37,6 @@
          "- Start under the bar or from a knee hang",
          "- Do an inverted tuck under the bar, then straighten the legs and point the toes",
          "- Lift the hips up - don't let the body sag"
-     ]
-  },
-  {
-     "title": "BIRD'S NEST",
-     "imageName": "birds_nest",
-     "isMount": false,
-     "difficulty": 1,
-     "tips": [
-         "// TODO Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
      ]
   },
   {
@@ -50,13 +55,13 @@
      "difficulty": 1
   },
   {
-     "title": "OPEN DELILAH",
-     "imageName": "placeholder",
+     "title": "PULL OVER",
+     "imageName": "pull_over",
      "isMount": true
   },
   {
      "title": "CANDLESTICK",
-     "imageName": "placeholder",
+     "imageName": "candlestick",
      "isMount": false,
      "difficulty": 2
   },
@@ -64,6 +69,11 @@
      "title": "HOCKS HANG",
      "imageName": "placeholder",
      "isMount": false
+  },
+  {
+     "title": "OPEN DELILAH",
+     "imageName": "placeholder",
+     "isMount": true
   },
   {
      "title": "SPLITS AWAY",
@@ -118,15 +128,5 @@
      "title": "STAR ON THE BAR",
      "imageName": "placeholder",
      "isMount": false
-  },
-  {
-     "title": "PULL OVER",
-     "imageName": "pull_over",
-     "isMount": true
-  },
-  {
-     "title": "STRADDLE",
-     "imageName": "straddle",
-     "isMount": true
   }
 ]
